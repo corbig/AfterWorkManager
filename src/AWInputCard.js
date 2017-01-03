@@ -18,7 +18,7 @@ export default class AWInputCard extends React.Component {
 
      <CardActions>
      <TextField
-     hintText="Ajouter un item..."/>
+     hintText="Ajouter un item..." style={{width:"50%"}}/>
 
      <RaisedButton label="Ajouter" primary={true}/>
     </CardActions>

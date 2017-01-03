@@ -34,7 +34,7 @@ export default class AWBoard extends React.Component {
       <Container fluid={true} style={boardStyle}>
 
          <Col lg="3" md="3" style={boardStyle}>
-         <Row><AWBoardPic title={"Soirée ciné"} subtitle={"les animaux fantastiques"} pic={"images/raclette.jpg"}/></Row>
+         <Row><AWBoardPic title={"Soirée ciné"} subtitle={"les animaux fantastiques"} pic={"images/fantasticbeast.jpg"}/></Row>
          <Row style={boardStyle}><AWTodoList/></Row>
          </Col>
          <Col lg="6" md="6" style={middleStyle}><Row ><AWMapCard/></Row></Col>

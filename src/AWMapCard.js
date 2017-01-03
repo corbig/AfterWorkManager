@@ -5,7 +5,8 @@ import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors';
 import IconButton from 'material-ui/IconButton';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 import {cyan500} from 'material-ui/styles/colors';
-import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble';
+import Place from 'material-ui/svg-icons/maps/place';
+import Navigation from 'material-ui/svg-icons/maps/navigation';
 import AWInputCard from './AWInputCard';
 import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
 import TextField from 'material-ui/TextField';
@@ -16,6 +17,8 @@ import DirectionsCar from 'material-ui/svg-icons/maps/directions-car';
 import DirectionsSubway from 'material-ui/svg-icons/maps/directions-subway';
 import DirectionsWalk from 'material-ui/svg-icons/maps/directions-walk';
 import DirectionsBike from 'material-ui/svg-icons/maps/directions-bike';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
 const style={
   marginRight : 10,
@@ -164,7 +167,7 @@ export default class AWMapCard extends React.Component {
       <Toolbar style={toolbarStyle}>
       <ToolbarGroup firstChild={true}>
       <IconButton>
-       <CommunicationChatBubble color={"#FFFFFF"}/>
+       <Place color={"#FFFFFF"}/>
       </IconButton>
         <ToolbarTitle text="Localisation" style={whiteStyle}/>
       </ToolbarGroup>
@@ -177,6 +180,7 @@ export default class AWMapCard extends React.Component {
       <Gmaps
         width={'100%'}
         height={'100%'}
+        style = {{position:"relative"}}
         lat={coords.lat}
         lng={coords.lng}
         zoom={15}
@@ -194,6 +198,9 @@ export default class AWMapCard extends React.Component {
           content={'Hello, React :)'}
           onCloseClick={this.onCloseClick} />
 
+          <FloatingActionButton mini={true} zDepth={5} secondary={true} style={{position:"absolute",bottom:5,right:5}}>
+          <ContentAdd />
+        </FloatingActionButton>
 
       </Gmaps>
      </Paper>
@@ -207,10 +214,10 @@ export default class AWMapCard extends React.Component {
      />
 
      <SelectField
-          hintText="Moyen de transport..."
+          hintText="Transport..."
           value={this.state.transport}
           onChange={this.transportChange}
-          style = {{verticalAlign: 'bottom'}}
+          style = {{verticalAlign: 'bottom',width:"30%"}}
         >
           <MenuItem value={"DRIVING"} primaryText="En voiture" leftIcon={<DirectionsCar />}/>
           <MenuItem value={"WALKING"} primaryText="A pied" leftIcon={<DirectionsWalk/>}/>
@@ -218,7 +225,7 @@ export default class AWMapCard extends React.Component {
           <MenuItem value={"TRANSIT"} primaryText="En bus" leftIcon={<DirectionsSubway/>}/>
         </SelectField>
 
-     <RaisedButton label="Go" primary={true} onClick={this.onGoClick}/>
+     <RaisedButton icon={<Navigation/>} primary={true} onClick={this.onGoClick}/>
     </CardActions>
     </Card>
 
