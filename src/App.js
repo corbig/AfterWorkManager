@@ -44,6 +44,12 @@ const recentlyStyle = {
 
 class App extends Component {
 
+  static childContextTypes =
+    {
+        muiTheme: React.PropTypes.object
+    }
+
+	
   constructor(props) {
     super(props);
 
@@ -52,11 +58,6 @@ class App extends Component {
       shadow : 1
     };
   }
-
-  static childContextTypes =
-    {
-        muiTheme: React.PropTypes.object
-    }
 
     getChildContext()
     {

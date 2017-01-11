@@ -1,5 +1,5 @@
 module.exports = {
-  entry: {
+ entry: {
     app: __dirname + '/src',
     components: [__dirname + '/src/App.js']
   },
@@ -11,11 +11,13 @@ module.exports = {
   module: {
     loaders: [
       {
+
         test: /.js/,
         loader: 'babel',
-        include: __dirname + '/src',
+		exclude: /node_modules/,
         query: {
-        presets: ['es2015','stage-0', 'react']
+		plugins: ['transform-runtime'],
+        presets: ['es2015', 'stage-0', 'react'],		
       }
     },
     {
