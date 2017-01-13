@@ -14,6 +14,7 @@ import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui
 import {cyan500} from 'material-ui/styles/colors';
 import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble';
 import AWInputCard from './AWInputCard';
+import AWChatMessage from './AWChatMessage';
 
 
 
@@ -53,7 +54,16 @@ export default class AWChat extends React.Component {
   
   constructor(props) {
     super(props);
-    this.state = {shadow: 1};
+    this.state = {
+      shadow: 1,
+      messages: [
+        {avatar: "images/tux.png", avatarAlign: "right", pseudo: "David", message: "Wesh"},
+        {avatar: "images/tux.png", avatarAlign: "left", pseudo: "Corention", message: "Salut"},
+        {avatar: "images/tux.png", avatarAlign: "right", pseudo: "David", message: "Tu bouge ?"},
+        {avatar: "images/tux.png", avatarAlign: "left", pseudo: "Corention", message: "Non je code"},
+        {avatar: "images/tux.png", avatarAlign: "left", pseudo: "Romain", message: "Moi aussi je rush"}
+      ]
+    };
   }
   
   render() {
@@ -73,29 +83,14 @@ export default class AWChat extends React.Component {
         
         <Paper style={paperStyle} zDepth={0}>
           <List>
-            <ListItem
-            primaryText="Chelsea Otakan"
-            leftAvatar={<Avatar src="images/tux.png" />}
-            />
-            <Divider />
-            <ListItem
-            primaryText={<span style={{paddingRight:"10px"}}>Eric Hoffman</span>}
-            style={{textAlign:"right"}}
-            rightAvatar={<Avatar src="images/tux.png"/>}
-            />
-            <Divider />
-            <ListItem
-            primaryText="James Anderson"
-            secondaryText = "Salut !"
-            leftAvatar={<Avatar src="images/tux.png" />}
-            />
-            <Divider />
-            <ListItem
-            primaryText={<span style={{paddingRight:"10px"}}>Trucmuche</span>}
-            secondaryText = {<div style={{paddingRight:"10px"}}>Salut</div>}
-            style={{textAlign:"right"}}
-            rightAvatar={<Avatar src="images/tux.png"/>}
-            />
+            {
+              this.state.messages.map((message, index) => (
+                <div>
+                  <AWChatMessage avatar = {message.avatar} avatarAlign = {message.avatarAlign} pseudo = {message.pseudo} message = {message.message}/>
+                  <Divider/>
+                </div>
+              ))
+            }
           </List>
         </Paper>
         <AWInputCard/>
