@@ -93,7 +93,9 @@ export default class AWTodoList extends React.Component {
       </Toolbar>
       <Paper style={paperStyle} zDepth={0}>
       <List>
-         <AWTodoItem text = {"Toto"} />
+         <AWTodoItem text = {"Toto"} status={"fait"}/>
+         <Divider />
+         <AWTodoItem text = {"Toto"} status={" à faire"}/>
          <Divider />
      </List>
      </Paper>

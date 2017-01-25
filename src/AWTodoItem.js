@@ -5,40 +5,53 @@ import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
-import {grey400} from 'material-ui/styles/colors';
+import {blue400,green400} from 'material-ui/styles/colors';
+import ActionCheckCircle from 'material-ui/svg-icons/action/check-circle';
+import Timelapse from 'material-ui/svg-icons/image/timelapse'
 
-const iconButtonElement = (
-  <IconButton
-    touch={true}
-    tooltip="more"
-    tooltipPosition="bottom-left"
-  >
-    <MoreVertIcon color={grey400} />
-  </IconButton>
-);
 
-const rightIconMenu = (
-  <IconMenu iconButtonElement={iconButtonElement}>
-    <MenuItem>Delete</MenuItem>
-  </IconMenu>
-);
+
 
 export default class AWTodoItem extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {shadow: 1};
+    this.state = {};
   }
 
+changeStatus = (status) => {
+  this.props.status = status;
+}
 
 
   render() {
+
+
+    var iconButtonElement = (
+      <IconButton
+        touch={true}
+        tooltip= { (this.props.status == "fait") ? "Fait" : "A Faire" }
+        tooltipPosition="bottom-left"
+      >
+
+        { (this.props.status == "fait") ? <ActionCheckCircle color={green400} /> : <Timelapse color={blue400} /> }
+      </IconButton>
+
+    );
+
+    var rightIconMenu = (
+      <IconMenu iconButtonElement={iconButtonElement}>
+        <MenuItem leftIcon={<Timelapse color={blue400} />} onTouchTap={()=>this.changeStatus("a faire")} >A faire</MenuItem>
+        <MenuItem leftIcon={<ActionCheckCircle color={green400} />} onTouchTap={()=>this.changeStatus("fait")} >Fait</MenuItem>
+      </IconMenu>
+    );
     return (
 
        <ListItem
          leftAvatar={<Avatar src="images/tux.png" />}
          rightIconButton={rightIconMenu}
          primaryText={this.props.text}
+
        />
 
     );

@@ -18,7 +18,7 @@ import DirectionsSubway from 'material-ui/svg-icons/maps/directions-subway';
 import DirectionsWalk from 'material-ui/svg-icons/maps/directions-walk';
 import DirectionsBike from 'material-ui/svg-icons/maps/directions-bike';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
+import ModeEdit from 'material-ui/svg-icons/Editor/mode-edit';
 
 const style={
   marginRight : 10,
@@ -199,7 +199,7 @@ export default class AWMapCard extends React.Component {
           onCloseClick={this.onCloseClick} />
 
           <FloatingActionButton mini={true} zDepth={5} secondary={true} style={{position:"absolute",bottom:5,right:5}}>
-          <ContentAdd />
+          <ModeEdit />
         </FloatingActionButton>
 
       </Gmaps>
