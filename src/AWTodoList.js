@@ -15,6 +15,9 @@ import {cyan500} from 'material-ui/styles/colors';
 import ImageEdit from 'material-ui/svg-icons/image/edit';
 import AWInputCard from './AWInputCard';
 import AWTodoItem from './AWTodoItem'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
+import { changeStatus } from './todos-actions.js';
 
 const style={
   marginRight : 10,
@@ -61,20 +64,37 @@ const iconButtonElement = (
   </IconButton>
 );
 
+
 const rightIconMenu = (
   <IconMenu iconButtonElement={iconButtonElement}>
     <MenuItem>Delete</MenuItem>
   </IconMenu>
 );
 
-export default class AWTodoList extends React.Component {
+const mapStateToProps = (store) => {
+  return {
+    todos : store.soireeState.todos
+  }
+}
 
-  constructor(props) {
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeStatus:(index,status)=>{dispatch(changeStatus(index,status))}
+
+  }
+}
+
+let AWTodoList =  React.createClass({
+
+  /*constructor: function(props) {
     super(props);
     this.state = {shadow: 1};
-  }
+  }*/
 
-
+  /*propTypes: {
+     name: React.PropTypes.string,
+     position: React.PropTypes.number
+   }*/
 
   render() {
     return (
@@ -93,10 +113,14 @@ export default class AWTodoList extends React.Component {
       </Toolbar>
       <Paper style={paperStyle} zDepth={0}>
       <List>
-         <AWTodoItem text = {"Toto"} status={"fait"}/>
-         <Divider />
-         <AWTodoItem text = {"Toto"} status={" à faire"}/>
-         <Divider />
+      {
+        this.props.todos.map((todo,index)=>
+          <div>
+          <AWTodoItem {...todo} changeStatus={this.props.changeStatus} index={index}/>
+          <Divider />
+          </div>
+
+      )}
      </List>
      </Paper>
     <AWInputCard/>
@@ -104,4 +128,8 @@ export default class AWTodoList extends React.Component {
 
     );
   }
-}
+})
+
+AWTodoList = connect(mapStateToProps,mapDispatchToProps)(AWTodoList)
+
+export default AWTodoList

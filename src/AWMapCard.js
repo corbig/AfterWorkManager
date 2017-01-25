@@ -18,7 +18,8 @@ import DirectionsSubway from 'material-ui/svg-icons/maps/directions-subway';
 import DirectionsWalk from 'material-ui/svg-icons/maps/directions-walk';
 import DirectionsBike from 'material-ui/svg-icons/maps/directions-bike';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ModeEdit from 'material-ui/svg-icons/Editor/mode-edit';
+import ModeEdit from 'material-ui/svg-icons/editor/mode-edit';
+import { connect } from 'react-redux'
 
 const style={
   marginRight : 10,
@@ -59,6 +60,19 @@ const coords = {
   lng: -0.5506655000000364
 };
 
+const mapStateToProps = (state, ownProps) => {
+  return {
+    active: ownProps.filter === state.visibilityFilter
+  }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    onClick: () => {
+      dispatch(setVisibilityFilter(ownProps.filter))
+    }
+  }
+}
 
 
 export default class AWMapCard extends React.Component {
@@ -232,4 +246,4 @@ export default class AWMapCard extends React.Component {
 
     );
   }
-}
+}connect(mapStateToProps, mapDispatchToProps)

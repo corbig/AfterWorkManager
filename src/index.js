@@ -5,8 +5,11 @@ import App from './App';
 import AWBoard from './AWBoard'
 import { Router, Route, Link,browserHistory,IndexRoute } from 'react-router'
 import Main from './Main'
+import store from './store';
+import { Provider } from 'react-redux';
 
 ReactDOM.render(
+  <Provider store={store}>
   <Router history={browserHistory}>
 
     <Route path="/" component={App}>
@@ -15,6 +18,7 @@ ReactDOM.render(
     <Route path="main" component={Main}/>
     </Route>
 
-  </Router>,
+  </Router>
+  </Provider>,
   document.getElementById('main')
 );

@@ -41,8 +41,8 @@ changeStatus = (status) => {
 
     var rightIconMenu = (
       <IconMenu iconButtonElement={iconButtonElement}>
-        <MenuItem leftIcon={<Timelapse color={blue400} />} onTouchTap={()=>this.changeStatus("a faire")} >A faire</MenuItem>
-        <MenuItem leftIcon={<ActionCheckCircle color={green400} />} onTouchTap={()=>this.changeStatus("fait")} >Fait</MenuItem>
+        <MenuItem leftIcon={<Timelapse color={blue400} />} onTouchTap={()=>this.props.changeStatus(this.props.index,"a faire")} >A faire</MenuItem>
+        <MenuItem leftIcon={<ActionCheckCircle color={green400} />} onTouchTap={()=>this.props.changeStatus(this.props.index,"fait")} >Fait</MenuItem>
       </IconMenu>
     );
     return (
