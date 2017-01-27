@@ -16,8 +16,7 @@ import ImageEdit from 'material-ui/svg-icons/image/edit';
 import AWInputCard from './AWInputCard';
 import AWTodoItem from './AWTodoItem'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux';
-import { changeStatus } from './todos-actions.js';
+import { changeStatus, addTodo } from '../actions/todos-actions.js';
 
 const style={
   marginRight : 10,
@@ -79,8 +78,8 @@ const mapStateToProps = (store) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    changeStatus:(index,status)=>{dispatch(changeStatus(index,status))}
-
+    changeStatus:(index,status)=>{dispatch(changeStatus(index,status))},
+    addTodo:(text)=>{dispatch(addTodo(text))}
   }
 }
 
@@ -123,7 +122,7 @@ let AWTodoList =  React.createClass({
       )}
      </List>
      </Paper>
-    <AWInputCard/>
+    <AWInputCard sendHandler={this.props.addTodo}/>
       </Card>
 
     );

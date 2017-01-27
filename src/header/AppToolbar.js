@@ -6,10 +6,10 @@ import DropDownMenu from 'material-ui/DropDownMenu';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 import Badge from 'material-ui/Badge';
-import MessagePopover from './MessagePopover'
+import MessagePopover from './components/MessagePopover'
 import Avatar from 'material-ui/Avatar';
 import {cyan500} from 'material-ui/styles/colors';
-import AppMenu from './AppMenu'
+import AppMenu from './components/AppMenu'
 
 const style={
   marginRight : 10,

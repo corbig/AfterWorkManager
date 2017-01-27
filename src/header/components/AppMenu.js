@@ -23,7 +23,7 @@ export default class AppMenu extends React.Component {
 
         <Drawer open={this.state.open} docked={false} onRequestChange={(open) => this.setState({open})}>
           <MenuItem><Link to="/board">Menu Item</Link></MenuItem>
-          <MenuItem>Menu Item 2</MenuItem>
+          <MenuItem><Link to="/">Menu Item 2</Link></MenuItem>
         </Drawer>
       </div>
     );

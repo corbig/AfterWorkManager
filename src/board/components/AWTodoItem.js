@@ -19,10 +19,6 @@ export default class AWTodoItem extends React.Component {
     this.state = {};
   }
 
-changeStatus = (status) => {
-  this.props.status = status;
-}
-
 
   render() {
 
@@ -48,7 +44,7 @@ changeStatus = (status) => {
     return (
 
        <ListItem
-         leftAvatar={<Avatar src="images/tux.png" />}
+         leftAvatar={<Avatar src={this.props.user.avatar} />}
          rightIconButton={rightIconMenu}
          primaryText={this.props.text}
 

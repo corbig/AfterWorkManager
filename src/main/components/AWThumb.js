@@ -26,6 +26,7 @@ export default class AWThumb extends React.Component {
       <Paper style={cardStyle} zDepth={this.state.shadow} rounded={false}
       onMouseOver={this.onMouseOver}
       onMouseOut={this.onMouseOut}
+      onTouchTap = {()=>this.props.changeSoiree(this.props.index)}
       >
       <CardMedia
         overlay={<CardTitle title={this.props.title} subtitle={this.props.subtitle}/>}

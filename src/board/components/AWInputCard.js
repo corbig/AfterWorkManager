@@ -8,19 +8,21 @@ export default class AWInputCard extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {shadow: 1};
+    this.state = {text: ""};
   }
 
-
+  textChanged = (event, text)=>{
+    this.setState({text});
+  }
 
   render() {
     return (
 
      <CardActions>
      <TextField
-     hintText="Ajouter un item..." style={{width:"50%"}}/>
+     hintText="Ajouter un item..." style={{width:"50%"}} onChange={this.textChanged}/>
 
-     <RaisedButton label="Ajouter" primary={true}/>
+     <RaisedButton label="Ajouter" primary={true} onTouchTap={()=>this.props.sendHandler(this.state.text)}/>
     </CardActions>
   );
   }

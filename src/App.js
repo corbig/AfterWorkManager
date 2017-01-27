@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
 //import './App.css';
-import AppToolbar from './AppToolbar'
+import AppToolbar from './header/AppToolbar'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import AutoComplete from 'material-ui/AutoComplete';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import Divider from 'material-ui/Divider';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import Paper from 'material-ui/Paper';
-import Subheader from 'material-ui/Subheader';
-import MapsLocalDrink from 'material-ui/svg-icons/maps/local-drink';
-import AWThumb from './AWThumb'
+
+
 
 injectTapEventPlugin();
 
@@ -49,7 +45,7 @@ class App extends Component {
         muiTheme: React.PropTypes.object
     }
 
-	
+
   constructor(props) {
     super(props);
 

@@ -1,5 +1,4 @@
 export function changeStatus(index,status) {
-
   return {
     type:'CHANGE_STATUS',
     index,
@@ -7,10 +6,11 @@ export function changeStatus(index,status) {
   };
 }
 
-export function deleteUserSuccess(userId) {
+export function addTodo(todo) {
+  
   return {
-    type: types.DELETE_USER_SUCCESS,
-    userId
+    type: 'ADD_TODO',
+    todo
   };
 }
 
