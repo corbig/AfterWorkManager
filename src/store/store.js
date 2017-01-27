@@ -8,16 +8,18 @@ import {data} from './data.js';
 const soireeReducer= function(state = data.currentSoiree, action) {
 
 var todos  = JSON.parse(JSON.stringify(state.todos))
+var messages  = JSON.parse(JSON.stringify(state.messages))
 
 //var todos = soiree.todos;
 
   switch(action.type){
+	  
     case 'CHANGE_STATUS' :
     todos[action.index].status = action.status;
     //data.currentSoiree.todos[action.index] = action.status;
     return Object.assign({},state,{todos : todos});
+	
     case 'ADD_TODO':
-
     var newtodo = {text:action.todo,status:" a faire",user:data.currentUser};
     todos.push(newtodo);
     data.currentSoiree.todos.push(newtodo)
@@ -25,6 +27,17 @@ var todos  = JSON.parse(JSON.stringify(state.todos))
         ...state,
         todos: state.todos.concat(newtodo)
     }
+	
+	case 'ADD_MESSAGE' :
+	var newmessage = {idUser: data.currentIdUser, message: action.message};
+	messages.push(newmessage);
+	data.currentSoiree.messages.push(newmessage)
+	return {
+	  ...state,
+	  messages : state.messages.concat(newmessage)
+	}
+	
+	
   }
 
   return state;
@@ -42,10 +55,22 @@ const mainReducer = function(state = data, action) {
   return state;
 }
 
+// The users Reducer
+const usersReducer = function(state = data.Users, action) {
+  return state;
+}
+
+// The currentIdUser Reducer
+const currentIdUserReducer = function(state = data.currentIdUser, action) {
+  return state;
+}
+
 // Combine Reducers
 const reducers = combineReducers({
   soireeState: soireeReducer,
-  mainState : mainReducer
+  mainState : mainReducer,
+  usersState: usersReducer,
+  currentIdUserState: currentIdUserReducer,
 });
 
 const store = createStore(reducers);
