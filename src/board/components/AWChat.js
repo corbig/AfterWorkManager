@@ -16,6 +16,11 @@ import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bu
 import AWInputCard from './AWInputCard';
 import AWChatMessage from './AWChatMessage';
 
+// Redux
+import { connect } from 'react-redux'
+import { addMessage } from '../actions/chat-actions.js';
+
+
 
 
 const style={
@@ -50,9 +55,34 @@ const paperStyle={
 }
 
 
-export default class AWChat extends React.Component {
-  
-  constructor(props) {
+
+
+// Redux
+const mapStateToProps = (store) => {
+
+/*  console.log("AWChat.mapStateToProps() : Store.soireeState=" + store.soireeState);
+  console.log(JSON.stringify(store.soireeState.messages));*/
+
+  return {
+    messages : store.mainState.soirees[store.mainState.currentIndex].messages,
+	users : store.mainState.Users,
+	currentIdUser: store.mainState.currentIdUser,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  console.log("AWChat.mapDispatchToProps() : Début");
+  return {
+    addMessage:(text)=>{dispatch(addMessage(text))}
+  }
+}
+
+
+
+
+let AWChat = React.createClass({
+
+  /*constructor(props) {
     super(props);
     this.state = {
       shadow: 1,
@@ -64,8 +94,15 @@ export default class AWChat extends React.Component {
         {avatar: "images/tux.png", avatarAlign: "left", pseudo: "Romain", message: "Moi aussi je rush"}
       ]
     };
-  }
-  
+  }*/
+  propTypes: {
+
+  },
+  getDefaultProps() {
+    return {
+
+    };
+  },
   render() {
     return (
       <Card style={cardStyle}>
@@ -80,21 +117,25 @@ export default class AWChat extends React.Component {
           <ToolbarGroup>
           </ToolbarGroup>
         </Toolbar>
-        
+
         <Paper style={paperStyle} zDepth={0}>
           <List>
             {
-              this.state.messages.map((message, index) => (
+              this.props.messages.map((message, index) => (
                 <div>
-                  <AWChatMessage avatar = {message.avatar} avatarAlign = {message.avatarAlign} pseudo = {message.pseudo} message = {message.message}/>
-                  <Divider/>
+                  <AWChatMessage avatar = {this.props.users[message.idUser].avatar} avatarAlign = { (message.idUser == this.props.currentIdUser) ? "right" : "left" } pseudo = {this.props.users[message.idUser].firstname} message = {message.message}/>
+				  <Divider/>
                 </div>
               ))
             }
           </List>
         </Paper>
-        <AWInputCard/>
+		<AWInputCard sendHandler={this.props.addMessage}/>
       </Card>
     );
   }
-}
+})
+
+AWChat = connect(mapStateToProps,mapDispatchToProps)(AWChat)
+
+export default AWChat

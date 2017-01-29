@@ -17,7 +17,7 @@ const mainReducer = function(state = data, action) {
 
 // Gestion des soirées
     case 'ADD_SOIREE' :
-    soirees.push({title : action.title,action.subtitle,action.pic,messages:[],cursor:{},todos:{}});
+    soirees.push({title : action.title,subtitle:action.subtitle,pic:action.pic,messages:[],cursor:{},todos:{}});
     return {...state,soirees : soirees}
 
     case 'MODIFY_SOIREE' :
@@ -46,14 +46,24 @@ const mainReducer = function(state = data, action) {
     case 'MODIFY_CURSOR':
     soirees[state.currentSoiree].cursor = action.cursor;
     return {...state,soirees : soirees}
+
+// Gestion du chat
+    case 'ADD_MESSAGE' :
+    var newmessage = {idUser: state.currentIdUser, message: action.message};
+    soirees[state.currentIndex].messages.push(newmessage);
+    return {...state,soirees : soirees}
+
   }
   return state;
 }
 
+
+
 // Combine Reducers
 const reducers = combineReducers({
   mainState : mainReducer,
-  routing: routerReducer
+  routing: routerReducer,
+
 });
 
 const middleware = applyMiddleware(

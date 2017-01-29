@@ -22,7 +22,13 @@ export var data = {
       {text:"Place cineday",status:" à faire",user:{name : "Tux", avatar : "images/tux.png"}},
     ],
 
-    messages : [],
+    messages : [
+		{idUser: 0, message: "Wesh"},
+		{idUser: 1, message: "Salut"},
+		{idUser: 0, message: "Tu bouge ?"},
+		{idUser: 1, message: "Non je code"},
+		{idUser: 2, message: "Moi aussi je rush"},
+	],
     cursor : {}
   },
 
@@ -45,13 +51,28 @@ export var data = {
     todos :[
       {text:"Lunette 3D",status:"fait", user:{name : "Tux", avatar : "images/tux.png"}},
       {text:"Place cineday",status:" à faire",user:{name : "Tux", avatar : "images/tux.png"}},
-    ]
+    ],
+	messages : [
+		{idUser: 0, message: "Wesh"},
+		{idUser: 1, message: "Salut"},
+		{idUser: 0, message: "Tu bouge ?"},
+		{idUser: 1, message: "Non je code"},
+		{idUser: 2, message: "Moi aussi je rush"},
+	],
   },
 
    currentUser : {
     name : "Tux",
     avatar : "images/tux.png"
   },
+  
+  currentIdUser: 0,
+  
+  Users : [
+	{firstname: "David", lastname: "Langin", avatar: "images/tux.png"},
+	{firstname: "Corentin", lastname: "Bigot", avatar: "images/tux.png"},
+	{firstname: "Romain", lastname: "Marechal", avatar: "images/tux.png"},
+  ],
 
   currentIndex : 0
 
