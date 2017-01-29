@@ -14,6 +14,7 @@ import AWThumb from './components/AWThumb'
 import { connect } from 'react-redux'
 import { changeCurrentSoiree } from './actions/main-actions.js';
 import { browserHistory } from 'react-router';
+import { push } from 'react-router-redux'
 
 const searchStyle = {
   marginTop : 50,
@@ -52,7 +53,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     changeSoiree : (index)=>{
       dispatch(changeCurrentSoiree(index));
-      browserHistory.push('/board');
+      dispatch(push('/board'));
+
     }
   }
 }
@@ -67,7 +69,6 @@ var Main =  React.createClass({
       shadow : 1
     };
   }*/
-
 
   render() {
     return (

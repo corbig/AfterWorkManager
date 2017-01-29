@@ -6,6 +6,7 @@ import Col from 'muicss/lib/react/col';
 import AWTodoList from './components/AWTodoList'
 import AWChat from './components/AWChat'
 import AWMapCard from './components/AWMapCard'
+import { connect } from 'react-redux'
 
 const boardStyle={
   height : "100%",
@@ -17,7 +18,20 @@ const middleStyle={
   height : "100%"
 }
 
-export default class AWBoard extends React.Component {
+const mapStateToProps = (store) => {
+  return {
+    soiree : store.mainState.soirees[store.mainState.currentIndex]
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    /*changeStatus:(index,status)=>{dispatch(changeStatus(index,status))},
+    addTodo:(text)=>{dispatch(addTodo(text))}*/
+  }
+}
+
+export class AWBoard extends React.Component {
 
   constructor(props) {
     super(props);
@@ -27,6 +41,7 @@ export default class AWBoard extends React.Component {
   }
 
 
+
   render() {
 
 
@@ -34,7 +49,7 @@ export default class AWBoard extends React.Component {
       <Container fluid={true} style={boardStyle}>
 
          <Col lg="3" md="3" style={boardStyle}>
-         <Row><AWBoardPic title={"Soirée ciné"} subtitle={"les animaux fantastiques"} pic={"images/fantasticbeast.jpg"}/></Row>
+         <Row><AWBoardPic {...this.props.soiree}/></Row>
          <Row style={boardStyle}><AWTodoList/></Row>
          </Col>
          <Col lg="6" md="6" style={middleStyle}><Row ><AWMapCard/></Row></Col>
@@ -46,3 +61,5 @@ export default class AWBoard extends React.Component {
     );
   }
 }
+
+export default connect(mapStateToProps,mapDispatchToProps)(AWBoard);

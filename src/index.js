@@ -7,6 +7,10 @@ import { Router, Route, Link,browserHistory,IndexRoute } from 'react-router'
 import Main from './main/Main'
 import store from './store/store';
 import { Provider } from 'react-redux';
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+
+
+const history = syncHistoryWithStore(browserHistory, store)
 
 ReactDOM.render(
   <Provider store={store}>

@@ -17,6 +17,7 @@ import AWInputCard from './AWInputCard';
 import AWTodoItem from './AWTodoItem'
 import { connect } from 'react-redux'
 import { changeStatus, addTodo } from '../actions/todos-actions.js';
+import { push } from 'react-router-redux'
 
 const style={
   marginRight : 10,
@@ -72,14 +73,16 @@ const rightIconMenu = (
 
 const mapStateToProps = (store) => {
   return {
-    todos : store.soireeState.todos
+    todos : store.mainState.soirees[store.mainState.currentIndex].todos
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     changeStatus:(index,status)=>{dispatch(changeStatus(index,status))},
-    addTodo:(text)=>{dispatch(addTodo(text))}
+    addTodo:(text)=>{
+      dispatch(addTodo(text));
+    }
   }
 }
 

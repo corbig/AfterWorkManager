@@ -53,5 +53,6 @@ export var data = {
     avatar : "images/tux.png"
   },
 
+  currentIndex : 0
 
 }

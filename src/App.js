@@ -53,6 +53,8 @@ class App extends Component {
       dataSource: [],
       shadow : 1
     };
+
+      localStorage.removeItem('data');
   }
 
     getChildContext()
