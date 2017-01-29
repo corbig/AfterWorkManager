@@ -3,7 +3,7 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import Paper from 'material-ui/Paper';
 
 const cardStyle = {
-  maxHeight: 300,
+  maxHeight: 100,
 maxWidth: 300,
 margin: 'auto',
 textAlign: 'center',

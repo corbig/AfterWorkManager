@@ -21,6 +21,7 @@
     "muicss": "^0.9.7",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-dropzone": "^3.9.2",
     "react-fbmessenger": "^1.6.1",
     "react-gmaps": "^1.5.0",
     "react-google-maps": "^6.0.1",

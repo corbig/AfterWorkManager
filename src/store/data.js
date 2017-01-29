@@ -4,6 +4,8 @@ export var data = {
   {
     title : "Soirée Bowling",
     pic : "images/bowling.jpg",
+    date : "",
+    hour : "",
     subtitle : "",
     todos :[
       {text:"Réserver au Silver bowling",status:" a fait", user:{name : "Tux", avatar : "images/tux.png"}}
@@ -17,6 +19,8 @@ export var data = {
     title : "Soirée Cinema",
     pic : "images/fantasticbeast.jpg",
     subtitle : "Les Animaux Fantastiques",
+    date : "",
+    hour : "",
     todos :[
       {text:"Lunette 3D",status:"fait", user:{name : "Tux", avatar : "images/tux.png"}},
       {text:"Place cineday",status:" à faire",user:{name : "Tux", avatar : "images/tux.png"}},
@@ -35,6 +39,8 @@ export var data = {
   {
     title : "Soirée Raclette",
     pic : "images/raclette.jpg",
+    date : "",
+    hour : "",
     subtitle : "",
     todos :[
       {text:"Acheter fromage",status:"fait", user:{name : "Tux", avatar : "images/tux.png"}},
@@ -65,9 +71,9 @@ export var data = {
     name : "Tux",
     avatar : "images/tux.png"
   },
-  
+
   currentIdUser: 0,
-  
+
   Users : [
 	{firstname: "David", lastname: "Langin", avatar: "images/tux.png"},
 	{firstname: "Corentin", lastname: "Bigot", avatar: "images/tux.png"},

@@ -4,3 +4,10 @@ export function changeCurrentSoiree(index) {
     index
   };
 }
+
+export function addSoiree(soiree) {
+  return {
+    type:'ADD_SOIREE',
+    soiree
+  };
+}

@@ -15,7 +15,7 @@ import { connect } from 'react-redux'
 import { changeCurrentSoiree } from './actions/main-actions.js';
 import { browserHistory } from 'react-router';
 import { push } from 'react-router-redux'
-
+import AWAddSoiree from './components/AWAddSoiree.js'
 const searchStyle = {
   marginTop : 50,
   width: "65%",
@@ -95,6 +95,7 @@ var Main =  React.createClass({
        </div>
 
         </p>
+        <AWAddSoiree/>
       </div>
     );
   }

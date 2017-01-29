@@ -17,13 +17,15 @@ const mainReducer = function(state = data, action) {
 
 // Gestion des soirées
     case 'ADD_SOIREE' :
-    soirees.push({title : action.title,subtitle:action.subtitle,pic:action.pic,messages:[],cursor:{},todos:{}});
+    soirees.push(action.soiree);
     return {...state,soirees : soirees}
 
     case 'MODIFY_SOIREE' :
     soirees[state.currentIndex].title = action.title;
     soirees[state.currentIndex].subtitle = action.subtitle;
     soirees[state.currentIndex].pic = action.pic;
+    soirees[state.currentIndex].hour = action.hour;
+    soirees[state.currentIndex].date = action.date;
     return {...state,soirees : soirees}
 
     case 'DELETE_SOIREE' :

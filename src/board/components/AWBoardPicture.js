@@ -5,8 +5,8 @@ import Avatar from 'material-ui/Avatar';
 
 
 const cardStyle = {
-  maxHeight: 600,
-maxWidth: 600,
+maxHeight: 600,
+width : "100%",
 margin: 'auto',
 textAlign: 'center',
 display: 'inline-block',
@@ -28,7 +28,7 @@ export default class AWBoardPic extends React.Component {
       <CardMedia
         overlay={<CardTitle title={this.props.title} subtitle={this.props.subtitle}/>}
      >
-    <img src={this.props.pic} />
+    <img src={this.props.pic} style = {{maxHeight : 600}}/>
   </CardMedia>
       </Paper>
 
