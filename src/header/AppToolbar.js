@@ -10,6 +10,7 @@ import MessagePopover from './components/MessagePopover'
 import Avatar from 'material-ui/Avatar';
 import {cyan500} from 'material-ui/styles/colors';
 import AppMenu from './components/AppMenu'
+import AWCurrentUser from './components/AWCurrentUser'
 
 const style={
   marginRight : 10,
@@ -41,16 +42,11 @@ export default class AppToolbar extends React.Component {
   render() {
     return (
       <Toolbar style={toolbarStyle}>
-      <ToolbarGroup firstChild={true}>
-      <AppMenu/>
-      <ToolbarSeparator style={style}/>
-      <Avatar
-        src="images/tux.png"
-        size={40}
-        style={style}
-      />
-        <ToolbarTitle text="Tux" style={whiteStyle}/>
-      </ToolbarGroup>
+        <ToolbarGroup firstChild={true}>
+          <AppMenu/>
+          <ToolbarSeparator style={style}/>
+          <AWCurrentUser/>
+        </ToolbarGroup>
 
         <ToolbarGroup>
           <MessagePopover/>
