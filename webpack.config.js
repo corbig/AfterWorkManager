@@ -17,11 +17,11 @@ module.exports = {
 		exclude: /node_modules/,
         query: {
 		plugins: ['transform-runtime'],
-        presets: ['es2015', 'stage-0', 'react'],		
+        presets: ['es2015', 'stage-0', 'react'],
       }
     },
     {
-                test: /\.scss$/,
+                test: /\.css$/,
                 loaders: [ 'style', 'css', 'sass' ]
     }
     ]

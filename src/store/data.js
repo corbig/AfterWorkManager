@@ -12,7 +12,7 @@ export var data = {
     ],
 
     messages : [],
-    cursor : {}
+    cursor : {lat:0,lng:0,text:""}
   },
 
   {
@@ -33,7 +33,7 @@ export var data = {
 		{idUser: 1, message: "Non je code"},
 		{idUser: 2, message: "Moi aussi je rush"},
 	],
-    cursor : {}
+    cursor : {lat: 47.47958550000001, lng: -0.5506655000000364, text : "1 Avenue des Droits de l'Homme, 49100 Angers, France"}
   },
 
   {
@@ -49,7 +49,7 @@ export var data = {
     ],
 
     messages : [],
-    cursor : {}
+    cursor : {lat:0,lng:0,text:""}
   }
 
   ],
