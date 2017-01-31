@@ -83,7 +83,7 @@ export class AWAddSoiree extends React.Component {
         pic:this.state.pic === "" ? "images/default.png" : this.state.pic,
         date:this.state.date,
         hour:this.state.hour,
-        messages:[],cursor:{},
+        messages:[],cursor:{lat:0,lng:0,text:""},
         todos:[]
       }
 

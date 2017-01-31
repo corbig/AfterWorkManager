@@ -34,8 +34,9 @@ export var data = {
         {idUser: 2, message: "Moi aussi je rush"},
         {idUser: 3, message: "Je finis mon programme d'automatisme"},
       ],
-      cursor: {}
-	  },
+
+    cursor : {lat:0,lng:0,text:""}
+  },
 
 	  {
       title: "Soirée Cinema",
@@ -54,7 +55,8 @@ export var data = {
         {idUser: 5, message: "Je suis rond comme une queue de pelle"},
         {idUser: 4, message: "Les brocolis sont de la partie"},
       ],
-      cursor: {}
+      cursor : {lat: 47.47958550000001, lng: -0.5506655000000364, text : "1 Avenue des Droits de l'Homme, 49100 Angers, France"}
+
 	  },
 
 	  {
@@ -70,7 +72,7 @@ export var data = {
       messages: [
         {idUser: 6, message: "AV César"},
       ],
-      cursor: {}
+      cursor: {lat:0,lng:0,text:""}
 	  }
   ],
 

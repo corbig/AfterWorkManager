@@ -45,8 +45,8 @@ const mainReducer = function(state = data, action) {
     return {...state,soirees : soirees}
 
 // Gestion de la map
-    case 'MODIFY_CURSOR':
-    soirees[state.currentSoiree].cursor = action.cursor;
+    case 'EDIT_LOCATION':
+    soirees[state.currentIndex].cursor = action.cursor;
     return {...state,soirees : soirees}
 
 // Gestion du chat

@@ -17,9 +17,8 @@ import DirectionsCar from 'material-ui/svg-icons/maps/directions-car';
 import DirectionsSubway from 'material-ui/svg-icons/maps/directions-subway';
 import DirectionsWalk from 'material-ui/svg-icons/maps/directions-walk';
 import DirectionsBike from 'material-ui/svg-icons/maps/directions-bike';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ModeEdit from 'material-ui/svg-icons/editor/mode-edit';
-import { connect } from 'react-redux'
+import AWEditCursor from './AWEditCursor';
+import { connect } from 'react-redux';
 
 const style={
   marginRight : 10,
@@ -55,27 +54,14 @@ const paperStyle={
   height : "500px"
 }
 
-const coords = {
-  lat: 47.47958550000001,
-  lng: -0.5506655000000364
-};
-
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (store) => {
   return {
-    active: ownProps.filter === state.visibilityFilter
-  }
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    onClick: () => {
-      dispatch(setVisibilityFilter(ownProps.filter))
-    }
+    cursor : store.mainState.soirees[store.mainState.currentIndex].cursor,
   }
 }
 
 
-export default class AWMapCard extends React.Component {
+export class AWMapCard extends React.Component {
 
   constructor(props) {
     super(props);
@@ -114,16 +100,7 @@ export default class AWMapCard extends React.Component {
 
       this.setState({input : place.formatted_address})
 
-    /*var address = [];
-    if (place.address_components) {
-      address = [
-        (place.address_components[0] && place.address_components[0].short_name || ''),
-        (place.address_components[1] && place.address_components[1].short_name || ''),
-        (place.address_components[2] && place.address_components[2].short_name || '')
-      ].join(' ');
-    }
 
-    this.setState({address});*/
 
   }.bind(this));
 
@@ -144,8 +121,9 @@ export default class AWMapCard extends React.Component {
 
   onGoClick=() =>{
 
-    var destination = coords
+    var destination = this.props.cursor
 
+   console.log(destination);
 
    var request = {
       origin: this.state.input,
@@ -168,7 +146,10 @@ export default class AWMapCard extends React.Component {
 
   }
 
-  transportChange = (event, index, transport) => this.setState({transport});
+  transportChange = (event, index, transport) => {
+    console.log(this.state.input)
+    this.setState({transport})
+  };
 
   inputChange = (event,input) => {
     this.setState({input})
@@ -195,26 +176,18 @@ export default class AWMapCard extends React.Component {
         width={'100%'}
         height={'100%'}
         style = {{position:"relative"}}
-        lat={coords.lat}
-        lng={coords.lng}
+        {...this.props.cursor}
         zoom={15}
         loadingMessage={'Be happy'}
         params={{v: '3.exp', key: "AIzaSyCsGhQwGn9OPER4ijFjhquYERUG07oa5bE"}}
         onMapCreated={this.onMapCreated}>
         <Marker
-          lat={coords.lat}
-          lng={coords.lng}
+          {...this.props.cursor}
           draggable={false}
         />
-        <InfoWindow
-          lat={coords.lat}
-          lng={coords.lng}
-          content={'Hello, React :)'}
-          onCloseClick={this.onCloseClick} />
 
-          <FloatingActionButton mini={true} zDepth={5} secondary={true} style={{position:"absolute",bottom:5,right:5}}>
-          <ModeEdit />
-        </FloatingActionButton>
+          <AWEditCursor />
+
 
       </Gmaps>
      </Paper>
@@ -246,4 +219,6 @@ export default class AWMapCard extends React.Component {
 
     );
   }
-}connect(mapStateToProps, mapDispatchToProps)
+}
+
+export default connect(mapStateToProps,null)(AWMapCard);
