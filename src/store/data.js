@@ -1,4 +1,20 @@
 export var data = {
+  sondage : [
+    {
+
+      title: "Qui vient ?",
+      options: [
+        {id:0, text:"Moi Moi", checked: true},
+        {id:1, text:"Non j'ai piscine", checked: false},
+        {id:2, text:"Non", checked: false},
+      ],
+      res : [
+        {id:0, nb:4},
+        {id:1, nb:2},
+        {id:2, nb:1}
+      ]
+    }
+  ],
 
   soirees : [
 	  {
@@ -57,8 +73,8 @@ export var data = {
       cursor: {}
 	  }
   ],
-	
-   
+
+
   currentUser: {
     name: "Tux",
     avatar: "images/tux.png"
@@ -77,6 +93,6 @@ export var data = {
   ],
 
   currentIndex: 0,
-  
-  
+
+
 }

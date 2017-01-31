@@ -14,12 +14,13 @@ import AWCurrentUser from './components/AWCurrentUser'
 
 const style={
   marginRight : 10,
-  marginLeft : 10
+  marginLeft : 10,
 }
 
 const toolbarStyle = {
       backgroundColor: cyan500,
-      color : "#FFFFFF"
+      color : "#FFFFFF",
+
     }
 const whiteStyle ={
   color : "#FFFFFF"

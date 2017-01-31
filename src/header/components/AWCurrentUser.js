@@ -48,13 +48,13 @@ export class AWCurrentUser extends React.Component {
 
   constructor(props) {
     super(props);
-    
-    // Le menu déroulant est fermé par défaut
+
+    // Le menu dï¿½roulant est fermï¿½ par dï¿½faut
     this.state = {open: false};
   }
 
   handleTouchTap = (event) => {
-    console.log("AWCurrentUser.handleTouchTap() : Début");
+    console.log("AWCurrentUser.handleTouchTap() : Dï¿½but");
     // This prevents ghost click.
     event.preventDefault();
 
@@ -62,27 +62,27 @@ export class AWCurrentUser extends React.Component {
       open: true,
       anchorEl: event.currentTarget,
     });
-    
+
     console.log("AWCurrentUser.handleTouchTap() : Fin");
   };
 
   handleRequestClose = () => {
-    console.log("AWCurrentUser.handleRequestClose() : Début");
-    
+    console.log("AWCurrentUser.handleRequestClose() : Dï¿½but");
+
     this.setState({
       open: false,
     });
-    
+
     console.log("AWCurrentUser.handleRequestClose() : Fin");
   };
 
   selectUser = (userId) => {
-    console.log("AWCurrentUser.selectUser(" + userId + ") : Début");
-    
+    console.log("AWCurrentUser.selectUser(" + userId + ") : Dï¿½but");
+
     this.props.changeCurrentIdUser(userId);
-    
+
     this.handleRequestClose();
-    
+
     console.log("AWCurrentUser.selectUser(" + userId + ") : Fin");
   };
 
@@ -99,7 +99,7 @@ export class AWCurrentUser extends React.Component {
           />
           <ToolbarTitle text={this.props.users[this.props.currentIdUser].firstname + " " + this.props.users[this.props.currentIdUser].lastname} style={whiteStyle}/>
         </div>
-        
+
         <Popover
           open={this.state.open}
           anchorEl={this.state.anchorEl}
@@ -116,15 +116,15 @@ export class AWCurrentUser extends React.Component {
                     leftAvatar={<Avatar src={user.avatar} />}
                     primaryText={user.firstname + " " + user.lastname}
                   />
-                  
+
                   { (index != users.length-1) ? <Divider inset={true} /> : null }
-                  
+
                 </div>
               ))
             }
           </List>
         </Popover>
-        
+
       </div>
     );
   }

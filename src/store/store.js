@@ -54,10 +54,12 @@ const mainReducer = function(state = data, action) {
     var newmessage = {idUser: state.currentIdUser, message: action.message};
     soirees[state.currentIndex].messages.push(newmessage);
     return {...state,soirees : soirees}
-    
+
     case 'CHANGE_CURRENT_ID_USER' :
     return {...state, currentIdUser: action.idUser}
 
+    case 'VOTE':
+    return {...state, res:action.res}
   }
   return state;
 }
