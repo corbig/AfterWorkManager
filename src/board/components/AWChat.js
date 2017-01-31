@@ -124,7 +124,7 @@ let AWChat = React.createClass({
               this.props.messages.map((message, index) => (
                 <div>
                   <AWChatMessage avatar = {this.props.users[message.idUser].avatar} avatarAlign = { (message.idUser == this.props.currentIdUser) ? "right" : "left" } pseudo = {this.props.users[message.idUser].firstname} message = {message.message}/>
-				  <Divider/>
+                  <Divider/>
                 </div>
               ))
             }
