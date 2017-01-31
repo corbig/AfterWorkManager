@@ -18,10 +18,11 @@ export var data = {
 
   soirees : [
 	  {
+
       title: "Soirée Bowling",
       pic: "images/bowling.jpg",
-      date: "",
-      hour: "",
+      date: "2017-01-18",
+      hour: "09:17",
       subtitle: "",
       todos: [
         {text: "Réserver au Silver bowling", status: " a fait", user: {name: "Tux", avatar: "images/tux.png"}},
@@ -42,8 +43,8 @@ export var data = {
       title: "Soirée Cinema",
       pic: "images/fantasticbeast.jpg",
       subtitle: "Les Animaux Fantastiques",
-      date: "",
-      hour: "",
+      date: "2017-01-18",
+      hour: "09:17",
       todos: [
         {text: "Lunette 3D", status: "fait", user: {name: "Tux", avatar: "images/tux.png"}},
         {text: "Place cineday", status: " à faire", user: {name: "Tux", avatar: "images/tux.png"}},
@@ -62,8 +63,8 @@ export var data = {
 	  {
       title: "Soirée Raclette",
       pic: "images/raclette.jpg",
-      date: "",
-      hour: "",
+      date: "2017-01-18",
+      hour: "09:17",
       subtitle: "",
       todos: [
         {text: "Acheter fromage", status: "fait", user: {name: "Tux", avatar: "images/tux.png"}},
@@ -85,13 +86,13 @@ export var data = {
   currentIdUser: 0,
 
   Users : [
-    {firstname: "David", lastname: "Langin", avatar: "images/avatar/engineer.png"},
-    {firstname: "Corentin", lastname: "Bigot", avatar: "images/avatar/tux.png"},
-    {firstname: "Romain", lastname: "Marechal", avatar: "images/avatar/dark_vador.png"},
-    {firstname: "Nicolas", lastname: "Babillot", avatar: "images/avatar/nutella.png"},
-    {firstname: "Alphonse", lastname: "", avatar: "images/avatar/freepik.jpg"},
-    {firstname: "Bazile", lastname: "", avatar: "images/avatar/5074.jpg"},
-    {firstname: "Jean-Louis", lastname: "", avatar: "images/avatar/frite.png"},
+    {firstname: "David", lastname: "Langin", avatar: "images/avatar/engineer.png", password:""},
+    {firstname: "Corentin", lastname: "Bigot", avatar: "images/avatar/tux.png", password:""},
+    {firstname: "Romain", lastname: "Marechal", avatar: "images/avatar/dark_vador.png", password:""},
+    {firstname: "Nicolas", lastname: "Babillot", avatar: "images/avatar/nutella.png", password:""},
+    {firstname: "Alphonse", lastname: "", avatar: "images/avatar/freepik.jpg", password:""},
+    {firstname: "Bazile", lastname: "", avatar: "images/avatar/5074.jpg", password:""},
+    {firstname: "Jean-Louis", lastname: "", avatar: "images/avatar/frite.png", password:""},
   ],
 
   currentIndex: 0,
