@@ -16,7 +16,7 @@ export var data = {
         {idUser: 0, message: "Tu bouge ?"},
         {idUser: 1, message: "Non je code"},
         {idUser: 2, message: "Moi aussi je rush"},
-        {idUser: 2, message: "Je finis mon programme d'automatisme"},
+        {idUser: 3, message: "Je finis mon programme d'automatisme"},
       ],
       cursor: {}
 	  },
@@ -50,9 +50,10 @@ export var data = {
       todos: [
         {text: "Acheter fromage", status: "fait", user: {name: "Tux", avatar: "images/tux.png"}},
         {text: "Acheter pommes de terre", status: " à faire", user: {name: "Tux", avatar: "images/tux.png"}},
-
       ],
-      messages: [],
+      messages: [
+        {idUser: 6, message: "AV César"},
+      ],
       cursor: {}
 	  }
   ],
@@ -66,12 +67,13 @@ export var data = {
   currentIdUser: 0,
 
   Users : [
-    {firstname: "David", lastname: "Langin", avatar: "images/tux.png"},
-    {firstname: "Corentin", lastname: "Bigot", avatar: "images/tux.png"},
-    {firstname: "Romain", lastname: "Marechal", avatar: "images/tux.png"},
-    {firstname: "Nicolas", lastname: "Babillot", avatar: "images/tux.png"},
-    {firstname: "Alphonse", lastname: "", avatar: "images/tux.png"},
-    {firstname: "Bazile", lastname: "", avatar: "images/tux.png"},
+    {firstname: "David", lastname: "Langin", avatar: "images/avatar/engineer.png"},
+    {firstname: "Corentin", lastname: "Bigot", avatar: "images/avatar/tux.png"},
+    {firstname: "Romain", lastname: "Marechal", avatar: "images/avatar/dark_vador.png"},
+    {firstname: "Nicolas", lastname: "Babillot", avatar: "images/avatar/nutella.png"},
+    {firstname: "Alphonse", lastname: "", avatar: "images/avatar/freepik.jpg"},
+    {firstname: "Bazile", lastname: "", avatar: "images/avatar/5074.jpg"},
+    {firstname: "Jean-Louis", lastname: "", avatar: "images/avatar/frite.png"},
   ],
 
   currentIndex: 0,
