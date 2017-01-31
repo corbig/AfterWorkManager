@@ -64,9 +64,9 @@ const mapStateToProps = (store) => {
   console.log(JSON.stringify(store.soireeState.messages));*/
 
   return {
-    messages : store.mainState.soirees[store.mainState.currentIndex].messages,
-	users : store.mainState.Users,
-	currentIdUser: store.mainState.currentIdUser,
+    messages: store.mainState.soirees[store.mainState.currentIndex].messages,
+    users: store.mainState.Users,
+    currentIdUser: store.mainState.currentIdUser,
   }
 }
 
