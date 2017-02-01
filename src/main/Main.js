@@ -49,7 +49,8 @@ const recentlyStyle = {
 const deleteStyle = {
   position : 'relative',
   float : 'right',
-  bottom: 40
+  bottom: 40,
+  right : 10
 
 }
 

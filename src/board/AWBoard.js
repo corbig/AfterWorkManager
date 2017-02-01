@@ -50,7 +50,6 @@ export class AWBoard extends React.Component {
     return (
       <Container fluid={true} style={boardStyle}>
          <Col lg="3" md="3" style={boardStyle}>
-            <Row><AWDateTimePicker {...this.props.soiree}/></Row>
             <Row><AWBoardPic {...this.props.soiree}/></Row>
             <Row style={boardStyle}><AWTodoList/></Row>
          </Col>

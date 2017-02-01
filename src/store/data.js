@@ -13,6 +13,34 @@ export var data = {
         {id:1, nb:2},
         {id:2, nb:1}
       ]
+    },
+    {
+
+      title: "Qui vient ?",
+      options: [
+        {id:0, text:"Moi Moi", checked: true},
+        {id:1, text:"Non j'ai piscine", checked: false},
+        {id:2, text:"Non", checked: false},
+      ],
+      res : [
+        {id:0, nb:4},
+        {id:1, nb:2},
+        {id:2, nb:1}
+      ]
+    },
+    {
+
+      title: "Qui vient ?",
+      options: [
+        {id:0, text:"Moi Moi", checked: true},
+        {id:1, text:"Non j'ai piscine", checked: false},
+        {id:2, text:"Non", checked: false},
+      ],
+      res : [
+        {id:0, nb:4},
+        {id:1, nb:2},
+        {id:2, nb:1}
+      ]
     }
   ],
 
@@ -36,7 +64,7 @@ export var data = {
         {idUser: 3, message: "Je finis mon programme d'automatisme"},
       ],
 
-    cursor : {lat:0,lng:0,text:""}
+    cursor : {lat:47.480489,lng:-0.5922931000000062,text:""}
   },
 
 	  {
@@ -73,7 +101,7 @@ export var data = {
       messages: [
         {idUser: 6, message: "AV César"},
       ],
-      cursor: {lat:0,lng:0,text:""}
+      cursor: {lat:47.480489,lng:-0.5922931000000062,text:""}
 	  }
   ],
 
