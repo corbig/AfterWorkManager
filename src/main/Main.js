@@ -16,6 +16,9 @@ import { changeCurrentSoiree } from './actions/main-actions.js';
 import { browserHistory } from 'react-router';
 import { push } from 'react-router-redux'
 import AWAddSoiree from './components/AWAddSoiree.js'
+import RaisedButton from 'material-ui/RaisedButton';
+import Delete from 'material-ui/svg-icons/action/delete';
+
 const searchStyle = {
   marginTop : 50,
   width: "65%",
@@ -43,6 +46,13 @@ const recentlyStyle = {
   marginTop : 10
 }
 
+const deleteStyle = {
+  position : 'relative',
+  float : 'right',
+  bottom: 40
+
+}
+
 const mapStateToProps = (store) => {
   return {
     soirees : store.mainState.soirees
@@ -59,16 +69,23 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-var Main =  React.createClass({
+export class Main extends React.Component {
 
-  /*constructor(props) {
+  constructor(props) {
     super(props);
 
     this.state = {
-      dataSource: [],
-      shadow : 1
+      delete : false
     };
-  }*/
+  }
+
+  enableDelete = () => {
+    this.setState({delete : true});
+  }
+
+  disableDelete = () => {
+    this.setState({delete : false});
+  }
 
   render() {
     return (
@@ -84,13 +101,15 @@ var Main =  React.createClass({
 
      <div style={dividerStyle}>
 
-     <Subheader> <h4> <MapsLocalDrink /> Prochaines soirées </h4> </Subheader>
-
+     <Subheader><h4> <MapsLocalDrink /> Prochaines soirées</h4> </Subheader>
+    {
+      this.state.delete ?  <RaisedButton icon = {<Delete/>} secondary={true} style = {deleteStyle} onTouchTap = {this.disableDelete}/> : <RaisedButton icon = {<Delete/>} primary={true} style = {deleteStyle} onTouchTap = {this.enableDelete}/>
+    }
      <Divider inset={false} /> </div>
      <div style={recentlyStyle}>
      {
        this.props.soirees.map((soiree,index)=>
-         <AWThumb {...soiree}  index = {index} changeSoiree = {this.props.changeSoiree} />)
+         <AWThumb {...soiree}  index = {index} changeSoiree = {this.props.changeSoiree} delete = {this.state.delete} />)
      }
        </div>
 
@@ -99,8 +118,6 @@ var Main =  React.createClass({
       </div>
     );
   }
-})
+}
 
-Main = connect(mapStateToProps,mapDispatchToProps)(Main)
-
-export default Main
+export default connect(mapStateToProps,mapDispatchToProps)(Main)

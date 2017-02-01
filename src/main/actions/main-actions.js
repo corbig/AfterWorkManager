@@ -11,3 +11,10 @@ export function addSoiree(soiree) {
     soiree
   };
 }
+
+export function deleteSoiree(index) {
+  return {
+    type:'DELETE_SOIREE',
+    index
+  };
+}
