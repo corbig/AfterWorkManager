@@ -51,7 +51,7 @@ class App extends Component {
 
     this.state = {
       dataSource: [],
-      shadow : 1
+      currentPage : "main"
     };
 
       localStorage.removeItem('data');
@@ -64,15 +64,25 @@ class App extends Component {
         }
     }
 
+    setCurrentPage = (currentPage) => {
+      this.setState({currentPage})
+    }
+
 
 onMouseOver = () => this.setState({shadow: 3});
 onMouseOut = () => this.setState({shadow: 1});
 
   render() {
+    const childrenWithProps = React.Children.map(this.props.children,
+     (child) => React.cloneElement(child, {
+       setCurrentPage: this.setCurrentPage
+     })
+    );
+
     return (
       <div className="App">
-        <AppToolbar />
-        <div>{this.props.children}</div>
+        <AppToolbar page={this.state.currentPage}/>
+        <div style={{marginTop:50}}>{childrenWithProps}</div>
       </div>
     );
   }

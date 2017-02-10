@@ -9,13 +9,12 @@ export var data = {
         {id:2, text:"Non", checked: false},
       ],
       res : [
-        {id:0, nb:4},
+        {id:0, nb:4, },
         {id:1, nb:2},
         {id:2, nb:1}
       ]
     },
     {
-
       title: "Qui vient ?",
       options: [
         {id:0, text:"Moi Moi", checked: false},
@@ -29,7 +28,19 @@ export var data = {
       ]
     },
     {
-
+      title: "Qui vient ?",
+      options: [
+        {id:0, text:"Moi Moi", checked: false},
+        {id:1, text:"Non j'ai piscine", checked: false},
+        {id:2, text:"Non", checked: false},
+      ],
+      res : [
+        {id:0, nb:4},
+        {id:1, nb:2},
+        {id:2, nb:1}
+      ]
+    },
+    {
       title: "Qui vient ?",
       options: [
         {id:0, text:"Moi Moi", checked: false},
@@ -91,8 +102,8 @@ export var data = {
 	  {
       title: "Soirée Raclette",
       pic: "images/raclette.jpg",
-      date: "2017-01-18",
-      hour: "09:17",
+      date: "2017-01-25",
+      hour: "18:00",
       subtitle: "",
       todos: [
         {text: "Acheter fromage", status: "fait", user: {name: "Tux", avatar: "images/tux.png"}},
@@ -100,6 +111,28 @@ export var data = {
       ],
       messages: [
         {idUser: 6, message: "AV César"},
+      ],
+      cursor: {lat:47.480489,lng:-0.5922931000000062,text:""}
+	  },
+    {
+      title: "Magie Magie",
+      pic: "images/magie_soiree.jpg",
+      date: "2017-03-01",
+      hour: "10:30",
+      subtitle: "",
+      todos: [
+        {text: "Amener des cartes", status: "à faire", user: {name: "Tux", avatar: "images/tux.png"}},
+        {text: "Acheter le costume de magicien", status: "fait", user: {name: "Tux", avatar: "images/tux.png"}},
+        {text: "Amener le nerf", status: " à faire", user: {name: "Tux", avatar: "images/tux.png"}}
+      ],
+      messages : [
+        {idUser: 8, message: "Salut"},
+        {idUser: 7, message: "Bonjour"},
+        {idUser: 8, message: "J'ai un nouveau tour de magie à te montrer"},
+        {idUser: 7, message: "Vazy montre !"},
+        {idUser: 8, message: "Non je le garde pour mon spectacle le jour du partiel"},
+        {idUser: 3, message: "Ca va pas marcher encore"},
+        {idUser: 8, message: "Si si, sinon on fera une bataille de nerf"},
       ],
       cursor: {lat:47.480489,lng:-0.5922931000000062,text:""}
 	  }
@@ -121,9 +154,12 @@ export var data = {
     {firstname: "Alphonse", lastname: "", avatar: "images/avatar/freepik.jpg", password:""},
     {firstname: "Bazile", lastname: "", avatar: "images/avatar/5074.jpg", password:""},
     {firstname: "Jean-Louis", lastname: "", avatar: "images/avatar/frite.png", password:""},
+    {firstname: "Alexandre", lastname: "", avatar: "images/avatar/ava.jpg", password:""},
+    {firstname: "Mehdi", lastname: "", avatar: "images/avatar/magicien.jpg", password:""},
   ],
 
   currentIndex: 0,
 
+  current_view: false,
 
 }
