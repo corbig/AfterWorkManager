@@ -12,8 +12,20 @@ export var data = {
         {id:0, nb:4},
         {id:1, nb:2},
         {id:2, nb:1}
+      ]
+    },
+    {
+      title: "Qui vient ?",
+      options: [
+        {id:0, text:"Moi Moi", checked: false},
+        {id:1, text:"Non j'ai piscine", checked: false},
+        {id:2, text:"Non", checked: false},
       ],
-      nbTotal : 7,
+      res : [
+        {id:0, nb:4},
+        {id:1, nb:2},
+        {id:2, nb:1}
+      ]
     },
     {
 
@@ -27,23 +39,7 @@ export var data = {
         {id:0, nb:4},
         {id:1, nb:2},
         {id:2, nb:1}
-      ],
-      nbTotal : 7,
-    },
-    {
-
-      title: "Qui vient ?",
-      options: [
-        {id:0, text:"Moi Moi", checked: false},
-        {id:1, text:"Non j'ai piscine", checked: false},
-        {id:2, text:"Non", checked: false},
-      ],
-      res : [
-        {id:0, nb:4},
-        {id:1, nb:2},
-        {id:2, nb:1}
-      ],
-      nbTotal : 7,
+      ]
     }
   ],
 

@@ -62,31 +62,42 @@ const paperStyle={
 // Redux
 const mapStateToProps = (store) => {
 
-
   return {
     polOptions : store.mainState.sondage[store.mainState.currentIndex].options,
     polRes : store.mainState.sondage[store.mainState.currentIndex].res,
     title : store.mainState.sondage[store.mainState.currentIndex].title,
     resVisibility : store.mainState.current_view,
-    nbTotal : store.mainState.sondage[store.mainState.currentIndex].nbTotal,
+    
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    total:(firstname, res) => {
+      var temp=0
+      for(var i=0;i<firstname.length;i++) {  
+        temp+=res[i].nb
+      }
+      return temp;
+    },
     vote:(firstname, res) => {
       var temp = 0
       for(var i=0;i<firstname.length;i++) {  
         if(firstname[i].checked==true) {
+          console.log(firstname[i])
           res[i].nb+=1;
         }
         temp+=res[i].nb
       }
+      console.log(res)
       dispatch(vote(res, temp))
       
     },
-    voteShow:(res) => {
+    voteShow:(res, firstname) => {
       if(res==true) {
+        for(var i=0;i<firstname.length;i++) {  
+          firstname[i].checked = false
+        }
         res=false
       }else {
         res=true
@@ -99,6 +110,7 @@ const mapDispatchToProps = (dispatch) => {
       }else {
         options[checked].checked=true
       }
+      console.log(options)
     }
   }
 }
@@ -112,7 +124,6 @@ let AWPol = React.createClass({
 
     };
   },
-
   render() {
     return (
       <Card style={cardStyle}>
@@ -141,17 +152,16 @@ let AWPol = React.createClass({
             ))
           }
         </List > : 
-
        <List>
-          {
+        {
             this.props.polOptions.map((firstname, index) => (
               <div>
-                <LinearProgress mode="determinate" value={this.props.polRes[index].nb} max={this.props.nbTotal} />
+                <p>{firstname.text + " : "+this.props.polRes[index].nb+"/"+this.props.total(this.props.polOptions, this.props.polRes)}</p>
+                <LinearProgress mode="determinate" value={this.props.polRes[index].nb} max={this.props.total(this.props.polOptions, this.props.polRes)}  />
               </div>
             ))
         }
         </List>}
-        
          {this.props.resVisibility == false ?  <FlatButton
           label="Voter"
           onTouchTap={()=>this.props.vote(this.props.polOptions, this.props.polRes)}
@@ -160,12 +170,12 @@ let AWPol = React.createClass({
         {this.props.resVisibility == false ? <FlatButton
           label="Résultats"
           secondary={true}
-          onTouchTap={()=>this.props.voteShow(this.props.resVisibility)}
+          onTouchTap={()=>this.props.voteShow(this.props.resVisibility, this.props.polOptions)}
         />: null }
          {this.props.resVisibility == true ? <FlatButton
           label="Retour au vote"
           secondary={true}
-          onTouchTap={()=>this.props.voteShow(this.props.resVisibility)}
+          onTouchTap={()=>this.props.voteShow(this.props.resVisibility, this.props.polOptions)}
         />: null }
         </Paper>
       </Card>

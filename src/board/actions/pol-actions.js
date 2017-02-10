@@ -1,8 +1,8 @@
-export function vote(vote, nb) {
+export function vote(vote) {
 
   return {
     type: 'VOTE',
-    vote, nb
+    vote
   };
 }
 export function switch_view(view) {
