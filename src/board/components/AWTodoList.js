@@ -73,7 +73,9 @@ const rightIconMenu = (
 
 const mapStateToProps = (store) => {
   return {
-    todos : store.mainState.soirees[store.mainState.currentIndex].todos
+    todos : store.mainState.soirees[store.mainState.currentIndex].todos,
+    users : store.mainState.Users,
+    currentUserId : store.mainState.currentUserId
   }
 }
 
@@ -118,7 +120,7 @@ let AWTodoList =  React.createClass({
       {
         this.props.todos.map((todo,index)=>
           <div>
-          <AWTodoItem {...todo} changeStatus={this.props.changeStatus} index={index}/>
+          <AWTodoItem {...todo} users = {this.props.users} changeStatus={this.props.changeStatus} index={index}/>
           <Divider />
           </div>
 

@@ -41,7 +41,7 @@ const mainReducer = function(state = data, action) {
     return {...state,soirees : soirees}
 
     case 'ADD_TODO':
-    soirees[state.currentIndex].todos.push({text:action.todo,status:"a faire",user:data.currentUser});
+    soirees[state.currentIndex].todos.push({text:action.todo,status:"a faire",userId:state.currentIdUser});
     return {...state,soirees : soirees}
 
 // Gestion de la map
@@ -59,7 +59,7 @@ const mainReducer = function(state = data, action) {
     return {...state, currentIdUser: action.idUser}
 
     case 'VOTE':
-    
+
     return {...state, res: action.res}
 
     case 'SWITCH_VIEW_RESULT':

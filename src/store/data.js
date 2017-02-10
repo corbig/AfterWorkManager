@@ -52,7 +52,7 @@ export var data = {
       hour: "09:17",
       subtitle: "",
       todos: [
-        {text: "Réserver au Silver bowling", status: " a fait", user: {name: "Tux", avatar: "images/tux.png"}},
+        {text: "Réserver au Silver bowling", status: " a fait", userId : 0},
       ],
       messages : [
         {idUser: 0, message: "Wesh"},
@@ -73,8 +73,8 @@ export var data = {
       date: "2017-01-18",
       hour: "09:17",
       todos: [
-        {text: "Lunette 3D", status: "fait", user: {name: "Tux", avatar: "images/tux.png"}},
-        {text: "Place cineday", status: " à faire", user: {name: "Tux", avatar: "images/tux.png"}},
+        {text: "Lunette 3D", status: "fait", userId:1},
+        {text: "Place cineday", status: " à faire", userId:2},
       ],
       messages: [
         {idUser: 4, message: "Bien le bonjour Mesdames"},
@@ -94,8 +94,8 @@ export var data = {
       hour: "18:00",
       subtitle: "",
       todos: [
-        {text: "Acheter fromage", status: "fait", user: {name: "Tux", avatar: "images/tux.png"}},
-        {text: "Acheter pommes de terre", status: " à faire", user: {name: "Tux", avatar: "images/tux.png"}},
+        {text: "Acheter fromage", status: "fait", userId : 3},
+        {text: "Acheter pommes de terre", status: " à faire", userId: 6},
       ],
       messages: [
         {idUser: 6, message: "AV César"},
