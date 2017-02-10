@@ -91,8 +91,8 @@ export var data = {
 	  {
       title: "Soirée Raclette",
       pic: "images/raclette.jpg",
-      date: "2017-01-18",
-      hour: "09:17",
+      date: "2017-01-25",
+      hour: "18:00",
       subtitle: "",
       todos: [
         {text: "Acheter fromage", status: "fait", user: {name: "Tux", avatar: "images/tux.png"}},

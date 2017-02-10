@@ -40,8 +40,12 @@ export class AWBoard extends React.Component {
 
     this.state = {
     };
-  }
 
+    console.log(window.location.pathname)
+  }
+  componentWillMount(){
+    this.props.setCurrentPage("board")
+  }
 
 
   render() {
