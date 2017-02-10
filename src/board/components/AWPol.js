@@ -18,11 +18,12 @@ import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bu
 import AWInputCard from './AWInputCard';
 import AWChatMessage from './AWChatMessage';
 import FlatButton from 'material-ui/FlatButton';
+import LinearProgress from 'material-ui/LinearProgress';
 
 
 // Redux
 import { connect } from 'react-redux'
-import { vote } from '../actions/pol-actions.js';
+import { vote, switch_view } from '../actions/pol-actions.js';
 
 
 const style={
@@ -61,32 +62,47 @@ const paperStyle={
 // Redux
 const mapStateToProps = (store) => {
 
-
   return {
     polOptions : store.mainState.sondage[store.mainState.currentIndex].options,
     polRes : store.mainState.sondage[store.mainState.currentIndex].res,
     title : store.mainState.sondage[store.mainState.currentIndex].title,
-    resVisibility : false,
+    resVisibility : store.mainState.current_view,
+    
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    total:(firstname, res) => {
+      var temp=0
+      for(var i=0;i<firstname.length;i++) {  
+        temp+=res[i].nb
+      }
+      return temp;
+    },
     vote:(firstname, res) => {
+      var temp = 0
       for(var i=0;i<firstname.length;i++) {  
         if(firstname[i].checked==true) {
+          console.log(firstname[i])
           res[i].nb+=1;
         }
+        temp+=res[i].nb
       }
-      dispatch(vote(res))
+      console.log(res)
+      dispatch(vote(res, temp))
+      
     },
-    voteShow:(res) => {
+    voteShow:(res, firstname) => {
       if(res==true) {
+        for(var i=0;i<firstname.length;i++) {  
+          firstname[i].checked = false
+        }
         res=false
       }else {
         res=true
       }
-      console.log(res)
+      dispatch(switch_view(res))
     },
     checkedCHange:(checked, options)=> {
       if(options[checked].checked==true) {
@@ -94,6 +110,7 @@ const mapDispatchToProps = (dispatch) => {
       }else {
         options[checked].checked=true
       }
+      console.log(options)
     }
   }
 }
@@ -107,7 +124,6 @@ let AWPol = React.createClass({
 
     };
   },
-
   render() {
     return (
       <Card style={cardStyle}>
@@ -122,7 +138,7 @@ let AWPol = React.createClass({
           </ToolbarGroup>
         </Toolbar>
         <Paper style={paperStyle} zDepth={0}>
-        {this.props.resVisibility == false ?<List >
+          {this.props.resVisibility == false ?<List >
           {
             this.props.polOptions.map((firstname, index) => (
               <div>
@@ -136,27 +152,31 @@ let AWPol = React.createClass({
             ))
           }
         </List > : 
-
        <List>
-          {
+        {
             this.props.polOptions.map((firstname, index) => (
               <div>
-              
+                <p>{firstname.text + " : "+this.props.polRes[index].nb+"/"+this.props.total(this.props.polOptions, this.props.polRes)}</p>
+                <LinearProgress mode="determinate" value={this.props.polRes[index].nb} max={this.props.total(this.props.polOptions, this.props.polRes)}  />
               </div>
             ))
         }
         </List>}
-        
-        <FlatButton
+         {this.props.resVisibility == false ?  <FlatButton
           label="Voter"
           onTouchTap={()=>this.props.vote(this.props.polOptions, this.props.polRes)}
           secondary={true}
-        />
-        <FlatButton
+        />: null }
+        {this.props.resVisibility == false ? <FlatButton
           label="Résultats"
           secondary={true}
-          onTouchTap={()=>this.props.voteShow(this.props.resVisibility)}
-        />
+          onTouchTap={()=>this.props.voteShow(this.props.resVisibility, this.props.polOptions)}
+        />: null }
+         {this.props.resVisibility == true ? <FlatButton
+          label="Retour au vote"
+          secondary={true}
+          onTouchTap={()=>this.props.voteShow(this.props.resVisibility, this.props.polOptions)}
+        />: null }
         </Paper>
       </Card>
     );

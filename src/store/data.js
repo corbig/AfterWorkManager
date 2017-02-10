@@ -15,7 +15,6 @@ export var data = {
       ]
     },
     {
-
       title: "Qui vient ?",
       options: [
         {id:0, text:"Moi Moi", checked: false},
@@ -125,5 +124,6 @@ export var data = {
 
   currentIndex: 0,
 
+  current_view: false,
 
 }
