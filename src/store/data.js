@@ -4,7 +4,7 @@ export var data = {
 
       title: "Qui vient ?",
       options: [
-        {id:0, text:"Moi Moi", checked: true},
+        {id:0, text:"Moi Moi", checked: false},
         {id:1, text:"Non j'ai piscine", checked: false},
         {id:2, text:"Non", checked: false},
       ],
@@ -18,7 +18,7 @@ export var data = {
 
       title: "Qui vient ?",
       options: [
-        {id:0, text:"Moi Moi", checked: true},
+        {id:0, text:"Moi Moi", checked: false},
         {id:1, text:"Non j'ai piscine", checked: false},
         {id:2, text:"Non", checked: false},
       ],
@@ -32,7 +32,7 @@ export var data = {
 
       title: "Qui vient ?",
       options: [
-        {id:0, text:"Moi Moi", checked: true},
+        {id:0, text:"Moi Moi", checked: false},
         {id:1, text:"Non j'ai piscine", checked: false},
         {id:2, text:"Non", checked: false},
       ],

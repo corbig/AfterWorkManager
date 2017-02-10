@@ -22,7 +22,7 @@ import FlatButton from 'material-ui/FlatButton';
 
 // Redux
 import { connect } from 'react-redux'
-import { addMessage } from '../actions/pol-actions.js';
+import { vote } from '../actions/pol-actions.js';
 
 
 const style={
@@ -64,24 +64,36 @@ const mapStateToProps = (store) => {
 
   return {
     polOptions : store.mainState.sondage[store.mainState.currentIndex].options,
-    polRes : store.mainState.sondage.res,
-    title : store.mainState.sondage.title,
+    polRes : store.mainState.sondage[store.mainState.currentIndex].res,
+    title : store.mainState.sondage[store.mainState.currentIndex].title,
+    resVisibility : false,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addMessage:(text)=>{dispatch(addMessage(text))},
-    changeSelection:(firstname,id) => {
-
-    },
-    vote:(firstname) => {
-      for(var i=0;i<firstname.options.length;i++) {
-        if(firstname.options[i].checked==true) {
-          firstname.res[i]+=1;
+    vote:(firstname, res) => {
+      for(var i=0;i<firstname.length;i++) {  
+        if(firstname[i].checked==true) {
+          res[i].nb+=1;
         }
       }
-      dispatch(vote(firstname.res))
+      dispatch(vote(res))
+    },
+    voteShow:(res) => {
+      if(res==true) {
+        res=false
+      }else {
+        res=true
+      }
+      console.log(res)
+    },
+    checkedCHange:(checked, options)=> {
+      if(options[checked].checked==true) {
+        options[checked].checked=false
+      }else {
+        options[checked].checked=true
+      }
     }
   }
 }
@@ -110,28 +122,40 @@ let AWPol = React.createClass({
           </ToolbarGroup>
         </Toolbar>
         <Paper style={paperStyle} zDepth={0}>
-        <List>
+        {this.props.resVisibility == false ?<List >
           {
             this.props.polOptions.map((firstname, index) => (
               <div>
               <Checkbox
                 key={firstname.id}
                 value={firstname.text}
-                label={firstname.text}
-              />
+                onTouchTap={()=>this.props.checkedCHange(firstname.id, this.props.polOptions)}
+                label={firstname.text} />
                 <Divider/>
               </div>
             ))
           }
-        </List>
+        </List > : 
+
+       <List>
+          {
+            this.props.polOptions.map((firstname, index) => (
+              <div>
+              
+              </div>
+            ))
+        }
+        </List>}
+        
         <FlatButton
           label="Voter"
-          onclick={this.props.vote}
+          onTouchTap={()=>this.props.vote(this.props.polOptions, this.props.polRes)}
           secondary={true}
         />
         <FlatButton
           label="Résultats"
           secondary={true}
+          onTouchTap={()=>this.props.voteShow(this.props.resVisibility)}
         />
         </Paper>
       </Card>

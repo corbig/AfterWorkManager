@@ -59,7 +59,7 @@ const mainReducer = function(state = data, action) {
     return {...state, currentIdUser: action.idUser}
 
     case 'VOTE':
-    return {...state, res:action.res}
+    return {...state, res: action.res}
   }
   return state;
 }
