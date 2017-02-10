@@ -84,12 +84,10 @@ const mapDispatchToProps = (dispatch) => {
       var temp = 0
       for(var i=0;i<firstname.length;i++) {  
         if(firstname[i].checked==true) {
-          console.log(firstname[i])
           res[i].nb+=1;
         }
         temp+=res[i].nb
       }
-      console.log(res)
       dispatch(vote(res, temp))
       
     },
@@ -110,7 +108,6 @@ const mapDispatchToProps = (dispatch) => {
       }else {
         options[checked].checked=true
       }
-      console.log(options)
     }
   }
 }
