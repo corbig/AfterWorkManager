@@ -29,7 +29,7 @@ const mainReducer = function(state = data, action) {
     return {...state,soirees : soirees}
 
     case 'DELETE_SOIREE' :
-    soirees.splice(action.index)
+    soirees.splice(action.index,1)
     return {...state,soirees : soirees}
 
     case 'CHANGE_CURRENT_SOIREE' :

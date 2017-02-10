@@ -19,6 +19,9 @@ import DirectionsWalk from 'material-ui/svg-icons/maps/directions-walk';
 import DirectionsBike from 'material-ui/svg-icons/maps/directions-bike';
 import AWEditCursor from './AWEditCursor';
 import { connect } from 'react-redux';
+import AWInfoCard from './AWInfoCard'
+import Timeline from 'material-ui/svg-icons/action/timeline';
+import Timelapse from 'material-ui/svg-icons/image/timelapse';
 
 const style={
   marginRight : 10,
@@ -54,6 +57,24 @@ const paperStyle={
   height : "500px"
 }
 
+const infoPaperStyle = {
+  position : 'relative',
+  top : 0,
+  right : 20,
+  fontSize : 1,
+  zIndex : 1,
+  margin : 0,
+  padding : 0,
+  display: 'inline-block',
+  float : 'right',
+
+}
+
+const itemStyle = {
+backgroundColor: '#00BCD4',
+color : "#FFFFFF"
+}
+
 const mapStateToProps = (store) => {
   return {
     cursor : store.mainState.soirees[store.mainState.currentIndex].cursor,
@@ -72,7 +93,9 @@ export class AWMapCard extends React.Component {
     autocomplete:null,
     transport:"",
     address:[],
-    input : ""
+    input : "",
+    distance :"",
+    duration : "",
   };
   }
 
@@ -95,10 +118,11 @@ export class AWMapCard extends React.Component {
 
     var place = this.state.autocomplete.getPlace();
 
-      console.log(place.geometry.location.lat())
-      console.log(place.geometry.location.lng())
+
 
       this.setState({input : place.formatted_address})
+
+
 
 
 
@@ -140,7 +164,11 @@ export class AWMapCard extends React.Component {
     if (status == 'OK') {
 
       this.state.directionsDisplay.setDirections(response);
+      this.setState({distance : response.routes[0].legs[0].distance.text , duration : response.routes[0].legs[0].duration.text});
     }
+
+    else this.setState({distance : "" , duration : ""});
+
   }.bind(this));
 
 
@@ -157,6 +185,10 @@ export class AWMapCard extends React.Component {
   };
 
   render() {
+    const items = [
+      {text :this.state.distance , icon : <Timeline color={ "#FFFFFF"}/>},
+      {text :this.state.duration , icon : <Timelapse color={ "#FFFFFF"}/>},
+    ];
     return (
       <Card style={cardStyle}>
       <Toolbar style={toolbarStyle}>
@@ -171,11 +203,12 @@ export class AWMapCard extends React.Component {
 
         </ToolbarGroup>
       </Toolbar>
+
       <Paper style={paperStyle} zDepth={0}>
+
       <Gmaps
         width={'100%'}
         height={'100%'}
-        style = {{position:"relative"}}
         {...this.props.cursor}
         zoom={15}
         loadingMessage={'Be happy'}
@@ -187,9 +220,11 @@ export class AWMapCard extends React.Component {
         />
 
           <AWEditCursor />
+        { (this.state.distance === "" && this.state.duration === "") ? null : <AWInfoCard items={items} paperStyle={infoPaperStyle} itemStyle = {itemStyle}/> }
 
 
       </Gmaps>
+
      </Paper>
      <CardActions>
      <TextField
