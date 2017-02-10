@@ -19,7 +19,7 @@ import AWInputCard from './AWInputCard';
 import AWChatMessage from './AWChatMessage';
 import FlatButton from 'material-ui/FlatButton';
 import LinearProgress from 'material-ui/LinearProgress';
-
+import AWAvatar from './AWAvatar';
 
 // Redux
 import { connect } from 'react-redux'
@@ -67,7 +67,8 @@ const mapStateToProps = (store) => {
     polRes : store.mainState.sondage[store.mainState.currentIndex].res,
     title : store.mainState.sondage[store.mainState.currentIndex].title,
     resVisibility : store.mainState.current_view,
-    
+    currentUser : store.mainState.currentIdUser,
+    users : store.mainState.Users,
   }
 }
 
@@ -80,15 +81,14 @@ const mapDispatchToProps = (dispatch) => {
       }
       return temp;
     },
-    vote:(firstname, res) => {
-      var temp = 0
+    vote:(firstname, res, user) => {
       for(var i=0;i<firstname.length;i++) {  
         if(firstname[i].checked==true) {
           res[i].nb+=1;
+          res[i].users.push(user)
         }
-        temp+=res[i].nb
       }
-      dispatch(vote(res, temp))
+      dispatch(vote(res))
       
     },
     voteShow:(res, firstname) => {
@@ -153,7 +153,14 @@ let AWPol = React.createClass({
         {
             this.props.polOptions.map((firstname, index) => (
               <div>
-                <p>{firstname.text + " : "+this.props.polRes[index].nb+"/"+this.props.total(this.props.polOptions, this.props.polRes)}</p>
+                <p>{firstname.text + " : "+this.props.polRes[index].nb+"/"+this.props.total(this.props.polOptions, this.props.polRes)}
+                  {
+                    this.props.polRes[index].users.map((res, index) => (
+                    <AWAvatar users={this.props.users[res]} />
+                  ))
+                  }
+
+                </p>
                 <LinearProgress mode="determinate" value={this.props.polRes[index].nb} max={this.props.total(this.props.polOptions, this.props.polRes)}  />
               </div>
             ))
@@ -161,7 +168,7 @@ let AWPol = React.createClass({
         </List>}
          {this.props.resVisibility == false ?  <FlatButton
           label="Voter"
-          onTouchTap={()=>this.props.vote(this.props.polOptions, this.props.polRes)}
+          onTouchTap={()=>this.props.vote(this.props.polOptions, this.props.polRes, this.props.currentUser)}
           secondary={true}
         />: null }
         {this.props.resVisibility == false ? <FlatButton
