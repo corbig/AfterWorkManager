@@ -12,7 +12,8 @@ export var data = {
         {id:0, nb:4},
         {id:1, nb:2},
         {id:2, nb:1}
-      ]
+      ],
+      nbTotal : 7,
     },
     {
 
@@ -26,7 +27,8 @@ export var data = {
         {id:0, nb:4},
         {id:1, nb:2},
         {id:2, nb:1}
-      ]
+      ],
+      nbTotal : 7,
     },
     {
 
@@ -40,7 +42,8 @@ export var data = {
         {id:0, nb:4},
         {id:1, nb:2},
         {id:2, nb:1}
-      ]
+      ],
+      nbTotal : 7,
     }
   ],
 
@@ -125,5 +128,6 @@ export var data = {
 
   currentIndex: 0,
 
+  current_view: false,
 
 }

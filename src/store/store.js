@@ -60,6 +60,9 @@ const mainReducer = function(state = data, action) {
 
     case 'VOTE':
     return {...state, res: action.res}
+
+    case 'SWITCH_VIEW_RESULT':
+    return {...state, current_view : action.view}
   }
   return state;
 }
