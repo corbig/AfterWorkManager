@@ -32,9 +32,9 @@ export class AWAddSoiree extends React.Component {
     hour :"",
     date :"",
     pollTitle:"",
+    doPoll: false,
     snackOpen : false
   };
-  doSondage = false;
 
   
   handleOpen = () => {
@@ -77,10 +77,10 @@ pollTitleChange = (event, pollTitle)=>{
 
 }
   checkedCHange = () => {
-    if(this.doSondage==false) {
-      this.doSondage=true;
+    if(this.state.doPoll==false) {
+      this.setState({doPoll:true});
     }else {
-      this.doSondage = false;
+      this.setState({doPoll:false})
     }
   }
   addSoiree = () => {
@@ -100,14 +100,26 @@ pollTitleChange = (event, pollTitle)=>{
         messages:[],cursor:{lat:0,lng:0,text:""},
         todos:[]
       }
-      let sondage = {
-        title: this.state.pollTitle,
-        options: [
-        ],
-        res : [
-        ]
+      let sondage;
+      if(this.state.doPoll==true) {
+        sondage = {
+                title: this.state.pollTitle,
+                options: [
+                ],
+                res : [
+                ],
+                displaySondage : true,
+              }
+      }else {
+        sondage = {
+          title: "",
+          options: [
+          ],
+          res : [
+          ],
+          displaySondage : false,
+        }
       }
-
       this.props.addSoiree(soiree, sondage);
       this.handleClose();
     }
@@ -181,8 +193,8 @@ pollTitleChange = (event, pollTitle)=>{
           <Checkbox
                 label="Ajouter un sondage" 
                 onTouchTap={()=>this.checkedCHange()}
-                />
-          <TextField value={this.state.pollTitle} onChange ={this.pollTitleChange}  floatingLabelText="Titre du sondage"/><br />
+          />
+          {this.state.doPoll== true ? <TextField value={this.state.pollTitle} onChange ={this.pollTitleChange}  floatingLabelText="Titre du sondage"/>: null }<br />
           </Row></Col>
         </Container>
         </Dialog>

@@ -21,6 +21,14 @@ var sondages = JSON.parse(JSON.stringify(state.sondage));
     sondages.push(action.sondage)
     return {...state,soirees : soirees, sondage : sondages}
 
+    case 'ADD_OPTION':
+    var res = {id:sondages[state.currentIndex].options.length, text:action.option, checked: false};
+    var res2 = {id:sondages[state.currentIndex].res.length, nb:0, users:[]};
+    sondages[state.currentIndex].options.push(res)
+    sondages[state.currentIndex].res.push(res2)
+    return {...state,sondage : sondages}
+
+
     case 'MODIFY_SOIREE' :
     soirees[state.currentIndex].title = action.title;
     soirees[state.currentIndex].subtitle = action.subtitle;

@@ -11,4 +11,10 @@ export function switch_view(view) {
     view
   };
 }
+export function addOptions(option) {
+  return {
+    type: 'ADD_OPTION',
+    option
+  };
+}
 
