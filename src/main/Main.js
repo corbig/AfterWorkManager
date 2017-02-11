@@ -76,8 +76,11 @@ export class Main extends React.Component {
     super(props);
 
     this.state = {
-      delete : false
+      delete : false,
+      searchText : ""
     };
+
+    console.log(search)
   }
 
   enableDelete = () => {
@@ -92,6 +95,10 @@ export class Main extends React.Component {
     this.props.setCurrentPage("main")
   }
 
+  handleUpdateInput = (searchText) =>{
+    this.setState({searchText})
+  }
+
   render() {
     return (
       <div>
@@ -100,7 +107,7 @@ export class Main extends React.Component {
        textFieldStyle = {searchStyle}
        style={searchStyle}
        hintText="Rechercher un lieu, une soirée ..."
-       dataSource={this.props.soirees}
+       dataSource = {[]}
        onUpdateInput={this.handleUpdateInput}
      />
 
@@ -115,7 +122,11 @@ export class Main extends React.Component {
      <div style={recentlyStyle}>
      {
        this.props.soirees.map((soiree,index)=>
-         <AWThumb {...soiree}  index = {index} changeSoiree = {this.props.changeSoiree} delete = {this.state.delete} />)
+
+      {
+        (this.state.searchText === "") ? <AWThumb {...soiree}  index = {index} changeSoiree = {this.props.changeSoiree} delete = {this.state.delete} /> : null
+      }
+      )
      }
        </div>
 

@@ -121,9 +121,9 @@ export var data = {
       hour: "10:30",
       subtitle: "",
       todos: [
-        {text: "Amener des cartes", status: "à faire", user: {name: "Tux", avatar: "images/tux.png"}},
-        {text: "Acheter le costume de magicien", status: "fait", user: {name: "Tux", avatar: "images/tux.png"}},
-        {text: "Amener le nerf", status: " à faire", user: {name: "Tux", avatar: "images/tux.png"}}
+        {text: "Amener des cartes", status: "à faire", userId : 7},
+        {text: "Acheter le costume de magicien", status: "fait", userId : 8},
+        {text: "Amener le nerf", status: " à faire", userId : 8}
       ],
       messages : [
         {idUser: 8, message: "Salut"},
