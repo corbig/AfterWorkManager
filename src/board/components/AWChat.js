@@ -33,7 +33,6 @@ const toolbarStyle = {
 	color : "#FFFFFF",
 	position: "relative",
 	marginTop:0,
-	zIndex: 2,
 	width:"100%"
 }
 
@@ -43,15 +42,16 @@ const whiteStyle ={
 
 const cardStyle = {
   margin: 'auto',
-  postion:"absolute",
   display: 'block',
   width:"100%",
+  height:"95%",
+  position : 'relative'
 }
 
 const paperStyle={
   overflowY: "auto",
   position : "relative",
-  height : "500px"
+  height : "80%"
 }
 
 
@@ -130,7 +130,7 @@ let AWChat = React.createClass({
             }
           </List>
         </Paper>
-		<AWInputCard sendHandler={this.props.addMessage}/>
+		<AWInputCard sendHandler={this.props.addMessage} style={{position:'absolute',bottom:0,width:"100%"}}/>
       </Card>
     );
   }

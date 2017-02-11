@@ -18,17 +18,21 @@ import { push } from 'react-router-redux'
 import AWAddSoiree from './components/AWAddSoiree.js'
 import RaisedButton from 'material-ui/RaisedButton';
 import Delete from 'material-ui/svg-icons/action/delete';
+import Search from 'material-ui/svg-icons/action/search';
 
 const searchStyle = {
   marginTop : 50,
-  width: "65%",
-  textAlign: 'center',
-  display: 'inline-block'
+  width: "60%",
+  position:'relative',
+  left:'18%',
+  fontSize: 20
+
+
 
 }
 
 const dividerStyle = {
-  marginTop : 300,
+  marginTop : 100,
   textAlign : 'left'
 
 }
@@ -80,7 +84,7 @@ export class Main extends React.Component {
       searchText : ""
     };
 
-    console.log(search)
+    console.log(this.state.searchText)
   }
 
   enableDelete = () => {
@@ -99,17 +103,21 @@ export class Main extends React.Component {
     this.setState({searchText})
   }
 
+
   render() {
     return (
       <div>
+      <img src="images/AfterWork.png" style={{width:350,height:300,marginTop:50,position:'relative', left:'40%'}}/>
       <p className="App-intro">
+
         <AutoComplete
        textFieldStyle = {searchStyle}
        style={searchStyle}
-       hintText="Rechercher un lieu, une soirée ..."
+       hintText="Rechercher une soirée ..."
        dataSource = {[]}
        onUpdateInput={this.handleUpdateInput}
      />
+     <Search style={{width:60,height:60,float:'left',position :'relative',left:'29%',top:'100'}}/>
 
      <div style={dividerStyle}>
 
@@ -123,9 +131,9 @@ export class Main extends React.Component {
      {
        this.props.soirees.map((soiree,index)=>
 
-      {
-        (this.state.searchText === "") ? <AWThumb {...soiree}  index = {index} changeSoiree = {this.props.changeSoiree} delete = {this.state.delete} /> : null
-      }
+
+        (this.state.searchText === "" || soiree.title.toLowerCase().includes(this.state.searchText.toLowerCase())) ? <AWThumb {...soiree}  index = {index} changeSoiree = {this.props.changeSoiree} delete = {this.state.delete} /> : null
+
       )
      }
        </div>

@@ -88,17 +88,17 @@ const mapDispatchToProps = (dispatch) => {
     },
     total:(firstname, res) => {
       var temp=0
-      for(var i=0;i<firstname.length;i++) {  
+      for(var i=0;i<firstname.length;i++) {
         temp+=res[i].nb
       }
       return temp;
     },
     vote:(firstname, res, user) => {
-      for(var i=0;i<firstname.length;i++) {  
+      for(var i=0;i<firstname.length;i++) {
         if(firstname[i].checked==true) {
-          
+
           var exist=-1;
-          for(var j=0;j<res[i].users.length;j++) {  
+          for(var j=0;j<res[i].users.length;j++) {
             if(res[i].users[j]==user) {
               exist=j;
             }
@@ -110,11 +110,11 @@ const mapDispatchToProps = (dispatch) => {
         }
       }
       dispatch(vote(res))
-      
+
     },
     voteShow:(res, firstname) => {
       if(res==true) {
-        for(var i=0;i<firstname.length;i++) {  
+        for(var i=0;i<firstname.length;i++) {
           firstname[i].checked = false
         }
         res=false
@@ -143,7 +143,7 @@ let AWPol = React.createClass({
     };
   },
   render() {
-   
+
     const actions = [
     <FlatButton
       label="Annuler"
@@ -158,6 +158,8 @@ let AWPol = React.createClass({
     />,
   ];
     return (
+      <div>
+      {this.props.pollVisible == true ?
       <Card style={cardStyle}>
         <Toolbar style={toolbarStyle}>
           <ToolbarGroup firstChild={true}>
@@ -169,9 +171,9 @@ let AWPol = React.createClass({
           <ToolbarGroup>
           </ToolbarGroup>
         </Toolbar>
-        {console.log(this.props)}
-        {this.props.pollVisible == true ? <Paper style={paperStyle} zDepth={0}>
-       
+
+         <Paper style={paperStyle} zDepth={0}>
+
           {this.props.resVisibility == false ?<List >
           {
             this.props.polOptions.map((firstname, index) => (
@@ -185,7 +187,7 @@ let AWPol = React.createClass({
               </div>
             ))
           }
-        </List > : 
+        </List > :
        <List>
         {
             this.props.polOptions.map((firstname, index) => (
@@ -219,8 +221,10 @@ let AWPol = React.createClass({
           secondary={true}
           onTouchTap={()=>this.props.voteShow(this.props.resVisibility, this.props.polOptions)}
         />: null }
-        </Paper> : null }
+        </Paper>
       </Card>
+      : null }
+      </div>
     );
   }
 })

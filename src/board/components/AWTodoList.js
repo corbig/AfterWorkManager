@@ -30,7 +30,6 @@ const toolbarStyle = {
       color : "#FFFFFF",
       position: "relative",
        marginTop:0,
-       zIndex: 2,
        width:"100%"
 }
 const whiteStyle ={
@@ -39,9 +38,10 @@ const whiteStyle ={
 
 const cardStyle = {
 margin: 'auto',
-postion:"absolute",
 display: 'block',
 width:"100%",
+height:"62%",
+position : 'relative'
 
 
 }
@@ -49,7 +49,7 @@ width:"100%",
 const paperStyle={
   overflowY: "auto",
   position : "relative",
-  height : "500px"
+  height : "100%"
 }
 
 
@@ -127,7 +127,7 @@ let AWTodoList =  React.createClass({
       )}
      </List>
      </Paper>
-    <AWInputCard sendHandler={this.props.addTodo}/>
+    <AWInputCard sendHandler={this.props.addTodo} style={{position:'absolute',bottom:0,width:"100%"}}/>
       </Card>
 
     );

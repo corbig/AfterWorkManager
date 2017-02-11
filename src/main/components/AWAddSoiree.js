@@ -36,7 +36,7 @@ export class AWAddSoiree extends React.Component {
     snackOpen : false
   };
 
-  
+
   handleOpen = () => {
     this.setState({open: true});
 
@@ -83,6 +83,24 @@ pollTitleChange = (event, pollTitle)=>{
       this.setState({doPoll:false})
     }
   }
+
+  parseDate = () =>{
+    var date = this.state.date
+    var month = date.getMonth()+1;
+    if(month<10) month = "0"+month;
+
+    var day = date.getDate() < 10 ? "0"+date.getDate() : date.getDate();
+
+    return date.getUTCFullYear()+"-"+month+"-"+day;
+  }
+
+  parseHour = () =>{
+    var hour = this.state.hour
+
+    var minutes = hour.getMinutes() < 10 ? "0"+hour.getMinutes() : hour.getMinutes();
+    return hour.getHours()+":"+minutes;
+  }
+
   addSoiree = () => {
 
     if(this.state.title.length === 0 || this.state.date.length === 0 || this.state.hour.length === 0)
@@ -90,16 +108,21 @@ pollTitleChange = (event, pollTitle)=>{
       this.setState({snackOpen : true})
     }
 
+
     else {
+
       let soiree = {
         title :this.state.title,
         subtitle:this.state.subtitle,
         pic:this.state.pic === "" ? "images/default.png" : this.state.pic,
-        date:this.state.date,
-        hour:this.state.hour,
-        messages:[],cursor:{lat:0,lng:0,text:""},
+        date:this.parseDate(),
+        hour:this.parseHour(),
+        messages:[],cursor:{lat:47.480489,lng:-0.5922931000000062,text:""},
         todos:[]
       }
+
+
+
       let sondage;
       if(this.state.doPoll==true) {
         sondage = {
@@ -191,7 +214,7 @@ pollTitleChange = (event, pollTitle)=>{
           <DatePicker hintText="Date de la soirée" mode="landscape" value={this.state.date} onChange ={this.dateChange}/>
           <TimePicker format="24hr" hintText="heure de la soirée" value={this.state.hour} onChange ={this.hourChange}/>
           <Checkbox
-                label="Ajouter un sondage" 
+                label="Ajouter un sondage"
                 onTouchTap={()=>this.checkedCHange()}
           />
           {this.state.doPoll== true ? <TextField value={this.state.pollTitle} onChange ={this.pollTitleChange}  floatingLabelText="Titre du sondage"/>: null }<br />

@@ -38,8 +38,9 @@ var sondages = JSON.parse(JSON.stringify(state.sondage));
     return {...state,soirees : soirees}
 
     case 'DELETE_SOIREE' :
+
     soirees.splice(action.index,1)
-    return {...state,soirees : soirees}
+    return {...state,soirees : soirees,currentIndex : 0}
 
     case 'CHANGE_CURRENT_SOIREE' :
     return {...state,currentIndex : action.index}
