@@ -4,6 +4,8 @@ import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import {List, ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import Add from 'material-ui/svg-icons/content/add';
 import Subheader from 'material-ui/Subheader';
 import Avatar from 'material-ui/Avatar';
 import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors';
@@ -17,13 +19,15 @@ import {cyan500} from 'material-ui/styles/colors';
 import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble';
 import AWInputCard from './AWInputCard';
 import AWChatMessage from './AWChatMessage';
+import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import LinearProgress from 'material-ui/LinearProgress';
-
+import AWAvatar from './AWAvatar';
+import Dialog from 'material-ui/Dialog';
 
 // Redux
 import { connect } from 'react-redux'
-import { vote, switch_view } from '../actions/pol-actions.js';
+import { vote, switch_view, addOptions } from '../actions/pol-actions.js';
 
 
 const style={
@@ -67,12 +71,21 @@ const mapStateToProps = (store) => {
     polRes : store.mainState.sondage[store.mainState.currentIndex].res,
     title : store.mainState.sondage[store.mainState.currentIndex].title,
     resVisibility : store.mainState.current_view,
-    
+    currentUser : store.mainState.currentIdUser,
+    users : store.mainState.Users,
+    pollVisible : store.mainState.sondage[store.mainState.currentIndex].displaySondage,
+    state: {
+      open : false,
+    }
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    addOptions:(text)=>{
+      console.log(text)
+      dispatch(addOptions(text))
+    },
     total:(firstname, res) => {
       var temp=0
       for(var i=0;i<firstname.length;i++) {  
@@ -80,15 +93,23 @@ const mapDispatchToProps = (dispatch) => {
       }
       return temp;
     },
-    vote:(firstname, res) => {
-      var temp = 0
+    vote:(firstname, res, user) => {
       for(var i=0;i<firstname.length;i++) {  
         if(firstname[i].checked==true) {
-          res[i].nb+=1;
+          
+          var exist=-1;
+          for(var j=0;j<res[i].users.length;j++) {  
+            if(res[i].users[j]==user) {
+              exist=j;
+            }
+          }
+          if(exist==-1) {
+            res[i].nb+=1;
+            res[i].users.push(user)
+          }
         }
-        temp+=res[i].nb
       }
-      dispatch(vote(res, temp))
+      dispatch(vote(res))
       
     },
     voteShow:(res, firstname) => {
@@ -108,7 +129,7 @@ const mapDispatchToProps = (dispatch) => {
       }else {
         options[checked].checked=true
       }
-    }
+    },
   }
 }
 
@@ -122,6 +143,20 @@ let AWPol = React.createClass({
     };
   },
   render() {
+   
+    const actions = [
+    <FlatButton
+      label="Annuler"
+      primary={true}
+      onTouchTap={this.props.close}
+    />,
+    <FlatButton
+      label="Ajouter"
+      secondary={true}
+      keyboardFocused={true}
+      onTouchTap={this.props.accept}
+    />,
+  ];
     return (
       <Card style={cardStyle}>
         <Toolbar style={toolbarStyle}>
@@ -129,12 +164,14 @@ let AWPol = React.createClass({
             <IconButton>
               <CommunicationChatBubble color={"#FFFFFF"}/>
             </IconButton>
-            <ToolbarTitle text="Qui vient ?" style={whiteStyle}/>
+            <ToolbarTitle text={this.props.title} style={whiteStyle}/>
           </ToolbarGroup>
           <ToolbarGroup>
           </ToolbarGroup>
         </Toolbar>
-        <Paper style={paperStyle} zDepth={0}>
+        {console.log(this.props)}
+        {this.props.pollVisible == true ? <Paper style={paperStyle} zDepth={0}>
+       
           {this.props.resVisibility == false ?<List >
           {
             this.props.polOptions.map((firstname, index) => (
@@ -153,15 +190,23 @@ let AWPol = React.createClass({
         {
             this.props.polOptions.map((firstname, index) => (
               <div>
-                <p>{firstname.text + " : "+this.props.polRes[index].nb+"/"+this.props.total(this.props.polOptions, this.props.polRes)}</p>
+                <p>{firstname.text + " : "+this.props.polRes[index].nb+"/"+this.props.total(this.props.polOptions, this.props.polRes)}
+                  {
+                    this.props.polRes[index].users.map((res, index) => (
+                    <AWAvatar users={this.props.users[res]}/>
+                  ))
+                  }
+
+                </p>
                 <LinearProgress mode="determinate" value={this.props.polRes[index].nb} max={this.props.total(this.props.polOptions, this.props.polRes)}  />
               </div>
             ))
         }
         </List>}
+        {this.props.resVisibility == false ? <AWInputCard sendHandler={this.props.addOptions}/> : null }
          {this.props.resVisibility == false ?  <FlatButton
           label="Voter"
-          onTouchTap={()=>this.props.vote(this.props.polOptions, this.props.polRes)}
+          onTouchTap={()=>this.props.vote(this.props.polOptions, this.props.polRes, this.props.currentUser)}
           secondary={true}
         />: null }
         {this.props.resVisibility == false ? <FlatButton
@@ -174,7 +219,7 @@ let AWPol = React.createClass({
           secondary={true}
           onTouchTap={()=>this.props.voteShow(this.props.resVisibility, this.props.polOptions)}
         />: null }
-        </Paper>
+        </Paper> : null }
       </Card>
     );
   }

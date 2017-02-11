@@ -1,7 +1,6 @@
 export var data = {
   sondage : [
     {
-
       title: "Qui vient ?",
       options: [
         {id:0, text:"Moi Moi", checked: false},
@@ -9,10 +8,11 @@ export var data = {
         {id:2, text:"Non", checked: false},
       ],
       res : [
-        {id:0, nb:4, },
-        {id:1, nb:2},
-        {id:2, nb:1}
-      ]
+        {id:0, nb:4, users:[0,1,2,3]},
+        {id:1, nb:2, users:[3,8]},
+        {id:2, nb:1, users:[5]}
+      ],
+      displaySondage : true
     },
     {
       title: "Qui vient ?",
@@ -22,10 +22,11 @@ export var data = {
         {id:2, text:"Non", checked: false},
       ],
       res : [
-        {id:0, nb:4},
-        {id:1, nb:2},
-        {id:2, nb:1}
-      ]
+        {id:0, nb:4, users:[5,6,4,1]},
+        {id:1, nb:2, users:[1,2]},
+        {id:2, nb:1, users:[2]}
+      ],
+      displaySondage : true
     },
     {
       title: "Qui vient ?",
@@ -35,10 +36,11 @@ export var data = {
         {id:2, text:"Non", checked: false},
       ],
       res : [
-        {id:0, nb:4},
-        {id:1, nb:2},
-        {id:2, nb:1}
-      ]
+        {id:0, nb:4, users:[0,8,7,5]},
+        {id:1, nb:2, users:[0,5]},
+        {id:2, nb:1, users:[4]}
+      ],
+      displaySondage : true,
     },
     {
       title: "Qui vient ?",
@@ -48,10 +50,11 @@ export var data = {
         {id:2, text:"Non", checked: false},
       ],
       res : [
-        {id:0, nb:4},
-        {id:1, nb:2},
-        {id:2, nb:1}
-      ]
+        {id:0, nb:4, users:[8,1,3,4]},
+        {id:1, nb:2, users:[7,6]},
+        {id:2, nb:1, users:[5]}
+      ],
+      displaySondage : true,
     }
   ],
 

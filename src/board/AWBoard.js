@@ -57,7 +57,9 @@ export class AWBoard extends React.Component {
             <Row><AWBoardPic {...this.props.soiree}/></Row>
             <Row style={boardStyle}><AWTodoList/></Row>
          </Col>
-         <Col lg="6" md="6" style={middleStyle}><Row ><AWMapCard/></Row></Col>
+         <Col lg="6" md="6" style={middleStyle}>
+         <Row >
+           <AWMapCard/></Row></Col>
          <Col lg="3" md="3" style={boardStyle}>
          <AWChat/>
          </Col>
