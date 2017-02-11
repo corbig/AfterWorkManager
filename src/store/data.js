@@ -1,7 +1,6 @@
 export var data = {
   sondage : [
     {
-
       title: "Qui vient ?",
       options: [
         {id:0, text:"Moi Moi", checked: false},

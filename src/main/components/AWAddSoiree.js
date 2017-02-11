@@ -13,10 +13,13 @@ import { connect } from 'react-redux'
 import {addSoiree} from '../actions/main-actions'
 import Snackbar from 'material-ui/Snackbar';
 import Dropzone from 'react-dropzone';
+import Checkbox from 'material-ui/Checkbox';
+
+
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addSoiree:(soiree)=>{dispatch(addSoiree(soiree))}
+    addSoiree:(soiree, sondage)=>{dispatch(addSoiree(soiree, sondage))},
   }
 }
 
@@ -28,9 +31,12 @@ export class AWAddSoiree extends React.Component {
     pic: "",
     hour :"",
     date :"",
+    pollTitle:"",
     snackOpen : false
   };
+  doSondage = false;
 
+  
   handleOpen = () => {
     this.setState({open: true});
 
@@ -49,7 +55,10 @@ export class AWAddSoiree extends React.Component {
     this.setState({title});
 
   }
+pollTitleChange = (event, pollTitle)=>{
+    this.setState({pollTitle});
 
+  }
   subtitleChange = (event, subtitle)=>{
     this.setState({subtitle});
   }
@@ -67,10 +76,14 @@ export class AWAddSoiree extends React.Component {
   this.setState({snackOpen: false});
 
 }
-
+  checkedCHange = () => {
+    if(this.doSondage==false) {
+      this.doSondage=true;
+    }else {
+      this.doSondage = false;
+    }
+  }
   addSoiree = () => {
-
-
 
     if(this.state.title.length === 0 || this.state.date.length === 0 || this.state.hour.length === 0)
     {
@@ -78,16 +91,24 @@ export class AWAddSoiree extends React.Component {
     }
 
     else {
-      let soiree = {title :this.state.
-        title,subtitle:this.state.subtitle,
+      let soiree = {
+        title :this.state.title,
+        subtitle:this.state.subtitle,
         pic:this.state.pic === "" ? "images/default.png" : this.state.pic,
         date:this.state.date,
         hour:this.state.hour,
         messages:[],cursor:{lat:0,lng:0,text:""},
         todos:[]
       }
+      let sondage = {
+        title: this.state.pollTitle,
+        options: [
+        ],
+        res : [
+        ]
+      }
 
-      this.props.addSoiree(soiree);
+      this.props.addSoiree(soiree, sondage);
       this.handleClose();
     }
 
@@ -157,7 +178,11 @@ export class AWAddSoiree extends React.Component {
           <TextField value={this.state.subtitle} onChange ={this.subtitleChange}  floatingLabelText="Sous-titre de la soirée (optionnel)"/><br />
           <DatePicker hintText="Date de la soirée" mode="landscape" value={this.state.date} onChange ={this.dateChange}/>
           <TimePicker format="24hr" hintText="heure de la soirée" value={this.state.hour} onChange ={this.hourChange}/>
-
+          <Checkbox
+                label="Ajouter un sondage" 
+                onTouchTap={()=>this.checkedCHange()}
+                />
+          <TextField value={this.state.pollTitle} onChange ={this.pollTitleChange}  floatingLabelText="Titre du sondage"/><br />
           </Row></Col>
         </Container>
         </Dialog>

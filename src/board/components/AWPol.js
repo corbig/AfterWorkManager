@@ -4,6 +4,8 @@ import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import {List, ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import Add from 'material-ui/svg-icons/content/add';
 import Subheader from 'material-ui/Subheader';
 import Avatar from 'material-ui/Avatar';
 import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors';
@@ -17,6 +19,7 @@ import {cyan500} from 'material-ui/styles/colors';
 import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble';
 import AWInputCard from './AWInputCard';
 import AWChatMessage from './AWChatMessage';
+import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import LinearProgress from 'material-ui/LinearProgress';
 import AWAvatar from './AWAvatar';
@@ -84,8 +87,17 @@ const mapDispatchToProps = (dispatch) => {
     vote:(firstname, res, user) => {
       for(var i=0;i<firstname.length;i++) {  
         if(firstname[i].checked==true) {
-          res[i].nb+=1;
-          res[i].users.push(user)
+          
+          var exist=-1;
+          for(var j=0;j<res[i].users.length;j++) {  
+            if(res[i].users[j]==user) {
+              exist=j;
+            }
+          }
+          if(exist==-1) {
+            res[i].nb+=1;
+            res[i].users.push(user)
+          }
         }
       }
       dispatch(vote(res))
@@ -129,12 +141,13 @@ let AWPol = React.createClass({
             <IconButton>
               <CommunicationChatBubble color={"#FFFFFF"}/>
             </IconButton>
-            <ToolbarTitle text="Qui vient ?" style={whiteStyle}/>
+            <ToolbarTitle text={this.props.title} style={whiteStyle}/>
           </ToolbarGroup>
           <ToolbarGroup>
           </ToolbarGroup>
         </Toolbar>
         <Paper style={paperStyle} zDepth={0}>
+       
           {this.props.resVisibility == false ?<List >
           {
             this.props.polOptions.map((firstname, index) => (
@@ -156,7 +169,7 @@ let AWPol = React.createClass({
                 <p>{firstname.text + " : "+this.props.polRes[index].nb+"/"+this.props.total(this.props.polOptions, this.props.polRes)}
                   {
                     this.props.polRes[index].users.map((res, index) => (
-                    <AWAvatar users={this.props.users[res]} />
+                    <AWAvatar users={this.props.users[res]}/>
                   ))
                   }
 
@@ -181,6 +194,8 @@ let AWPol = React.createClass({
           secondary={true}
           onTouchTap={()=>this.props.voteShow(this.props.resVisibility, this.props.polOptions)}
         />: null }
+        <RaisedButton icon={<Add/>} primary={true}/>
+        
         </Paper>
       </Card>
     );

@@ -12,13 +12,14 @@ entre les différentes vues **/
 const mainReducer = function(state = data, action) {
 
   var soirees = JSON.parse(JSON.stringify(state.soirees));
-
+var sondages = JSON.parse(JSON.stringify(state.sondage));
   switch(action.type){
 
 // Gestion des soirées
     case 'ADD_SOIREE' :
     soirees.push(action.soiree);
-    return {...state,soirees : soirees}
+    sondages.push(action.sondage)
+    return {...state,soirees : soirees, sondage : sondages}
 
     case 'MODIFY_SOIREE' :
     soirees[state.currentIndex].title = action.title;

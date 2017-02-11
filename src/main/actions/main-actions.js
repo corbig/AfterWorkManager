@@ -5,10 +5,10 @@ export function changeCurrentSoiree(index) {
   };
 }
 
-export function addSoiree(soiree) {
+export function addSoiree(soiree, sondage) {
   return {
     type:'ADD_SOIREE',
-    soiree
+    soiree, sondage
   };
 }
 
