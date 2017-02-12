@@ -51,7 +51,7 @@ var sondages = JSON.parse(JSON.stringify(state.sondage));
     return {...state,soirees : soirees}
 
     case 'ADD_TODO':
-    soirees[state.currentIndex].todos.push({text:action.todo,status:"a faire",userId:state.currentIdUser});
+    if(action.todo !== "") soirees[state.currentIndex].todos.push({text:action.todo,status:"a faire",userId:state.currentIdUser});
     return {...state,soirees : soirees}
 
 // Gestion de la map
@@ -61,8 +61,10 @@ var sondages = JSON.parse(JSON.stringify(state.sondage));
 
 // Gestion du chat
     case 'ADD_MESSAGE' :
+    if(action.message !== ""){
     var newmessage = {idUser: state.currentIdUser, message: action.message};
     soirees[state.currentIndex].messages.push(newmessage);
+    }
     return {...state,soirees : soirees}
 
     case 'CHANGE_CURRENT_ID_USER' :

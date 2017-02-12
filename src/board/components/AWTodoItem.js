@@ -17,6 +17,8 @@ export default class AWTodoItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+
+    console.log(this.props)
   }
 
 
@@ -44,7 +46,7 @@ export default class AWTodoItem extends React.Component {
     return (
 
        <ListItem
-         leftAvatar={<Avatar avatar={this.props.user} />}
+         leftAvatar={<Avatar src={this.props.users[this.props.userId].avatar} />}
          rightIconButton={rightIconMenu}
          primaryText={this.props.text}
 
