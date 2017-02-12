@@ -10,8 +10,32 @@ import Divider from 'material-ui/Divider';
 import Subheader from 'material-ui/Subheader';
 import Avatar from 'material-ui/Avatar';
 import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors';
+import { connect } from 'react-redux'
 
-export default class MessagePopover extends React.Component {
+const mapStateToProps = (store) => {
+
+  return {
+    mainstate: store.mainState
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      getMessagesSoirees:(state)=>{
+        var res= [];
+        var soi = [];
+        for(var i=0;i<state.soirees.length;i++) {
+          if(state.soirees[i].messages[state.soirees[i].messages.length-1].idUser!=state.currentIdUser) {
+            res.push(state.soirees[i].messages[state.soirees[i].messages.length-1])
+            soi.push(i);
+          }
+        }
+        return {res, soi};
+    }
+  }
+}
+
+export class MessagePopover extends React.Component {
 
   constructor(props) {
     super(props);
@@ -20,7 +44,7 @@ export default class MessagePopover extends React.Component {
       open: false,
     };
   }
-
+  
   handleTouchTap = (event) => {
     // This prevents ghost click.
     event.preventDefault();
@@ -54,70 +78,31 @@ export default class MessagePopover extends React.Component {
         >
           <List>
             <Subheader>Today</Subheader>
-            <ListItem
-              leftAvatar={<Avatar src="images/doomguy.jpg" />}
-              primaryText="Brunch this weekend?"
-              secondaryText={
-                <p>
-                  <span style={{color: darkBlack}}>Brendan Lim</span> --
-                  I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?
-                </p>
-              }
-              secondaryTextLines={2}
-            />
-            <Divider inset={true} />
-            <ListItem
-              leftAvatar={<Avatar src="images/doomguy.jpg" />}
-              primaryText={
-                <p>Summer BBQ&nbsp;&nbsp;<span style={{color: lightBlack}}>4</span></p>
-              }
-              secondaryText={
-                <p>
-                  <span style={{color: darkBlack}}>to me, Scott, Jennifer</span> --
-                  Wish I could come, but I&apos;m out of town this weekend.
-                </p>
-              }
-              secondaryTextLines={2}
-            />
-            <Divider inset={true} />
-            <ListItem
-              leftAvatar={<Avatar src="images/doomguy.jpg" />}
-              primaryText="Oui oui"
-              secondaryText={
-                <p>
-                  <span style={{color: darkBlack}}>Grace Ng</span> --
-                  Do you have Paris recommendations? Have you ever been?
-                </p>
-              }
-              secondaryTextLines={2}
-            />
-            <Divider inset={true} />
-            <ListItem
-              leftAvatar={<Avatar src="images/doomguy.jpg" />}
-              primaryText="Birdthday gift"
-              secondaryText={
-                <p>
-                  <span style={{color: darkBlack}}>Kerem Suer</span> --
-                  Do you have any ideas what we can get Heidi for her birthday? How about a pony?
-                </p>
-              }
-              secondaryTextLines={2}
-            />
-            <Divider inset={true} />
-            <ListItem
-              leftAvatar={<Avatar src="images/doomguy.jpg" />}
-              primaryText="Recipe to try"
-              secondaryText={
-                <p>
-                  <span style={{color: darkBlack}}>Raquel Parrado</span> --
-                  We should eat this: grated squash. Corn and tomatillo tacos.
-                </p>
-              }
-              secondaryTextLines={2}
-            />
+             {
+               
+             this.props.getMessagesSoirees(this.props.mainstate).res.map((test, index) => (
+              <div>
+              
+              {console.log(test)}
+              <ListItem
+                leftAvatar={<Avatar src={this.props.mainstate.soirees[this.props.getMessagesSoirees(this.props.mainstate).soi[index]].pic} />}
+                primaryText={this.props.mainstate.soirees[this.props.getMessagesSoirees(this.props.mainstate).soi[index]].title}
+                secondaryText={
+                  <p>
+                    <span style={{color: darkBlack}}>{this.props.mainstate.Users[test.idUser].firstname + " "+this.props.mainstate.Users[test.idUser].lastname}</span> --
+                    {test.message}
+                  </p>
+                }
+                secondaryTextLines={2}
+              />
+              <Divider inset={true} />
+              </div>
+            ))
+          }
           </List>
         </Popover>
       </div>
     );
   }
 }
+export default connect(mapStateToProps,mapDispatchToProps)(MessagePopover);
