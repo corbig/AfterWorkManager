@@ -8,7 +8,7 @@ import MenuItem from 'material-ui/MenuItem';
 import {blue400,green400} from 'material-ui/styles/colors';
 import ActionCheckCircle from 'material-ui/svg-icons/action/check-circle';
 import Timelapse from 'material-ui/svg-icons/image/timelapse'
-
+import AWAvatar from './AWAvatar';
 
 
 
@@ -44,7 +44,7 @@ export default class AWTodoItem extends React.Component {
     return (
 
        <ListItem
-         leftAvatar={<Avatar src={this.props.users[this.props.userId].avatar} />}
+         leftAvatar={<AWAvatar avatar={this.props.user} />}
          rightIconButton={rightIconMenu}
          primaryText={this.props.text}
 

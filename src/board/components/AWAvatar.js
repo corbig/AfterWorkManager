@@ -7,7 +7,6 @@ export default class AWAvatar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {shadow: 1};
-    console.log(props)
   }
 
   render() {
