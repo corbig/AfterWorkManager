@@ -44,7 +44,7 @@ export default class AWTodoItem extends React.Component {
     return (
 
        <ListItem
-         leftAvatar={<AWAvatar avatar={this.props.user} />}
+         leftAvatar={<Avatar avatar={this.props.user} />}
          rightIconButton={rightIconMenu}
          primaryText={this.props.text}
 

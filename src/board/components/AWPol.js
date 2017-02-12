@@ -73,6 +73,7 @@ const mapStateToProps = (store) => {
     resVisibility : store.mainState.current_view,
     currentUser : store.mainState.currentIdUser,
     users : store.mainState.Users,
+    
     pollVisible : store.mainState.sondage[store.mainState.currentIndex].displaySondage,
     state: {
       open : false,
@@ -189,11 +190,13 @@ let AWPol = React.createClass({
           }
         </List > :
        <List>
+         
         {
             this.props.polOptions.map((firstname, index) => (
               <div>
                 <p>{firstname.text + " : "+this.props.polRes[index].nb+"/"+this.props.total(this.props.polOptions, this.props.polRes)}
                   {
+                    
                     this.props.polRes[index].users.map((res, index) => (
                     <AWAvatar users={this.props.users[res]}/>
                   ))

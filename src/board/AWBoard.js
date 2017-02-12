@@ -91,9 +91,11 @@ export class AWBoard extends React.Component {
          <Col lg="3" md="3" style={columnStyle}>
             <AWBoardPic {...this.props.soiree}/>
             <AWTodoList/>
+          
          </Col>
          <Col lg="6" md="6" style={middleStyle}>
          <Row><AWMapCard/></Row>
+        
          <Row><AWPol/></Row>
          </Col>
          <Col lg="3" md="3" style={columnStyle}>
