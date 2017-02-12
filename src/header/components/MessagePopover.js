@@ -11,6 +11,8 @@ import Subheader from 'material-ui/Subheader';
 import Avatar from 'material-ui/Avatar';
 import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors';
 import { connect } from 'react-redux'
+import { changeCurrentSoiree } from '../actions/main-actions.js';
+import { push } from 'react-router-redux'
 
 const mapStateToProps = (store) => {
 
@@ -47,8 +49,10 @@ const mapDispatchToProps = (dispatch) => {
           }
           return num;
     },
-    redirect:(index)=>{
-      return '/board';
+    redirect:(index, main)=>{
+      console.log(index)
+      dispatch(changeCurrentSoiree(index));
+      dispatch(push('/board'));
     }
   }
 }
@@ -110,6 +114,7 @@ export class MessagePopover extends React.Component {
                   </p>
                 }
                 secondaryTextLines={2}
+                onTouchTap={()=>this.props.redirect(index, this.props.mainstate)}
               />
               <Divider inset={true} />
               </div>
