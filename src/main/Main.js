@@ -32,7 +32,7 @@ const searchStyle = {
 }
 
 const dividerStyle = {
-  marginTop : 100,
+  marginTop : 70,
   textAlign : 'left'
 
 }
