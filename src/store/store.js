@@ -28,6 +28,9 @@ var sondages = JSON.parse(JSON.stringify(state.sondage));
     sondages[state.currentIndex].res.push(res2)
     return {...state,sondage : sondages}
 
+    case 'OPEN':
+    return {...state, state:action.state}
+    
 
     case 'MODIFY_SOIREE' :
     soirees[state.currentIndex].title = action.title;

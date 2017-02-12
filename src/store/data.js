@@ -62,7 +62,6 @@ export var data = {
 
   soirees : [
 	  {
-
       title: "Soirée Bowling",
       pic: require("../images/bowling.jpg"),
       date: "2017-01-18",
@@ -166,5 +165,8 @@ export var data = {
   currentIndex: 0,
 
   current_view: false,
-
+  state :{
+        open: false,
+        anchorEl : null,
+      },
 }
