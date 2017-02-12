@@ -32,6 +32,15 @@ const mapDispatchToProps = (dispatch) => {
         }
         return {res, soi};
     },
+    getMessagesCount:(state)=>{
+      var num=0;
+      for(var i=0;i<state.soirees.length;i++) {
+            if(state.soirees[i].messages[state.soirees[i].messages.length-1].idUser!=state.currentIdUser) {
+              num++;
+            }
+          }
+          return num;
+    },
     redirect:(index)=>{
       return '/board';
     }
@@ -67,7 +76,7 @@ export class MessagePopover extends React.Component {
   render() {
     return (
       <div>
-        <Badge badgeContent={4} secondary={true} badgeStyle={{top: 16, right: 16}}>
+        <Badge badgeContent={this.props.getMessagesCount(this.props.mainstate)} secondary={true} badgeStyle={{top: 16, right: 16}}>
           <IconButton onTouchTap={this.handleTouchTap}>
             <CommunicationChat color={"#FFFFFF"}/>
           </IconButton>
