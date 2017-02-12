@@ -29,7 +29,7 @@ export default class AWTodoItem extends React.Component {
       <IconButton
         touch={true}
         tooltip= { (this.props.status == "fait") ? "Fait" : "A Faire" }
-        tooltipPosition="bottom-left"
+        tooltipPosition="middle-left"
       >
 
         { (this.props.status == "fait") ? <ActionCheckCircle color={green400} /> : <Timelapse color={blue400} /> }
