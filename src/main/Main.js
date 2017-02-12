@@ -107,7 +107,7 @@ export class Main extends React.Component {
   render() {
     return (
       <div>
-      <img src="images/AfterWork.png" style={{width:350,height:300,marginTop:50,position:'relative', left:'40%'}}/>
+      <img src={require("../images/AfterWork.png")} style={{width:350,height:300,marginTop:50,position:'relative', left:'40%'}}/>
       <p className="App-intro">
 
         <AutoComplete
@@ -122,7 +122,7 @@ export class Main extends React.Component {
      <div style={dividerStyle}>
 
      <Subheader><h4>
-     <img src="images/coupe_de_champ.png" style={{width:27,height:37}}/> Prochaines soirées</h4> </Subheader>
+     <img src={require("../images/coupe_de_champ.png")} style={{width:27,height:37}}/> Prochaines soirées</h4> </Subheader>
     {
       this.state.delete ?  <RaisedButton icon = {<Delete/>} secondary={true} style = {deleteStyle} onTouchTap = {this.disableDelete}/> : <RaisedButton icon = {<Delete/>} primary={true} style = {deleteStyle} onTouchTap = {this.enableDelete}/>
     }

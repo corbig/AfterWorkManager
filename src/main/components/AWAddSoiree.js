@@ -114,7 +114,7 @@ pollTitleChange = (event, pollTitle)=>{
       let soiree = {
         title :this.state.title,
         subtitle:this.state.subtitle,
-        pic:this.state.pic === "" ? "images/default.png" : this.state.pic,
+        pic:this.state.pic === "" ? require("../../images/default.png") : this.state.pic,
         date:this.parseDate(),
         hour:this.parseHour(),
         messages:[],cursor:{lat:47.480489,lng:-0.5922931000000062,text:""},

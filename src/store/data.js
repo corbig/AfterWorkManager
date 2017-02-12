@@ -1,3 +1,5 @@
+
+
 export var data = {
   sondage : [
     {
@@ -62,7 +64,7 @@ export var data = {
 	  {
 
       title: "Soirée Bowling",
-      pic: "images/bowling.jpg",
+      pic: require("../images/bowling.jpg"),
       date: "2017-01-18",
       hour: "09:17",
       subtitle: "",
@@ -83,7 +85,7 @@ export var data = {
 
 	  {
       title: "Soirée Cinema",
-      pic: "images/fantasticbeast.jpg",
+      pic: require('../images/fantasticbeast.jpg'),
       subtitle: "Les Animaux Fantastiques",
       date: "2017-01-18",
       hour: "09:17",
@@ -104,7 +106,7 @@ export var data = {
 
 	  {
       title: "Soirée Raclette",
-      pic: "images/raclette.jpg",
+      pic: require('../images/raclette.jpg'),
       date: "2017-01-25",
       hour: "18:00",
       subtitle: "",
@@ -119,7 +121,7 @@ export var data = {
 	  },
     {
       title: "Magie Magie",
-      pic: "images/magie_soiree.jpg",
+      pic: require("../images/magie_soiree.jpg"),
       date: "2017-03-01",
       hour: "10:30",
       subtitle: "",
@@ -150,15 +152,15 @@ export var data = {
   currentIdUser: 0,
 
   Users : [
-    {firstname: "David", lastname: "Langin", avatar: "images/avatar/engineer.png", password:""},
-    {firstname: "Corentin", lastname: "Bigot", avatar: "images/avatar/tux.png", password:""},
-    {firstname: "Romain", lastname: "Marechal", avatar: "images/avatar/dark_vador.png", password:""},
-    {firstname: "Nicolas", lastname: "Babillot", avatar: "images/avatar/nutella.png", password:""},
-    {firstname: "Alphonse", lastname: "", avatar: "images/avatar/freepik.jpg", password:""},
-    {firstname: "Bazile", lastname: "", avatar: "images/avatar/5074.jpg", password:""},
-    {firstname: "Jean-Louis", lastname: "", avatar: "images/avatar/frite.png", password:""},
-    {firstname: "Alexandre", lastname: "", avatar: "images/avatar/ava.jpg", password:""},
-    {firstname: "Mehdi", lastname: "", avatar: "images/avatar/magicien.jpg", password:""},
+    {firstname: "David", lastname: "Langin", avatar: require("../images/avatar/engineer.png"), password:""},
+    {firstname: "Corentin", lastname: "Bigot", avatar: require("../images/avatar/tux.png"), password:""},
+    {firstname: "Romain", lastname: "Marechal", avatar: require("../images/avatar/dark_vador.png"), password:""},
+    {firstname: "Nicolas", lastname: "Babillot", avatar: require("../images/avatar/nutella.png"), password:""},
+    {firstname: "Alphonse", lastname: "", avatar: require("../images/avatar/freepik.jpg"), password:""},
+    {firstname: "Bazile", lastname: "", avatar: require("../images/avatar/5074.jpg"), password:""},
+    {firstname: "Jean-Louis", lastname: "", avatar: require("../images/avatar/frite.png"), password:""},
+    {firstname: "Alexandre", lastname: "", avatar: require("../images/avatar/ava.jpg"), password:""},
+    {firstname: "Mehdi", lastname: "", avatar: require("../images/avatar/magicien.jpg"), password:""},
   ],
 
   currentIndex: 0,
