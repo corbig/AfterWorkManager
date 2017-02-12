@@ -120,7 +120,7 @@ let AWTodoList =  React.createClass({
       {
         this.props.todos.map((todo,index)=>
           <div>
-          <AWTodoItem {...todo} users = {this.props.users} changeStatus={this.props.changeStatus} index={index}/>
+          <AWTodoItem {...todo} users={this.props.users} changeStatus={this.props.changeStatus} index={index}/>
           <Divider />
           </div>
 
