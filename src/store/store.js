@@ -38,8 +38,9 @@ var sondages = JSON.parse(JSON.stringify(state.sondage));
     return {...state,soirees : soirees}
 
     case 'DELETE_SOIREE' :
+
     soirees.splice(action.index,1)
-    return {...state,soirees : soirees}
+    return {...state,soirees : soirees,currentIndex : 0}
 
     case 'CHANGE_CURRENT_SOIREE' :
     return {...state,currentIndex : action.index}
@@ -50,7 +51,7 @@ var sondages = JSON.parse(JSON.stringify(state.sondage));
     return {...state,soirees : soirees}
 
     case 'ADD_TODO':
-    soirees[state.currentIndex].todos.push({text:action.todo,status:"a faire",user:data.currentUser});
+    soirees[state.currentIndex].todos.push({text:action.todo,status:"a faire",userId:state.currentIdUser});
     return {...state,soirees : soirees}
 
 // Gestion de la map
@@ -68,7 +69,7 @@ var sondages = JSON.parse(JSON.stringify(state.sondage));
     return {...state, currentIdUser: action.idUser}
 
     case 'VOTE':
-    
+
     return {...state, res: action.res}
 
     case 'SWITCH_VIEW_RESULT':

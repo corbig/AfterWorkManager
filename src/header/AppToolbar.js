@@ -80,7 +80,7 @@ export class AppToolbar extends React.Component {
           <ArrowBack color={"#FFFFFF"}/>
         </IconButton> :
           <div>
-          <img src="images/Beer.png" style={{width:38,height:38}}/>
+          <img src={require("../images/Beer.png")} style={{width:38,height:38}}/>
           </div>
         }
           <ToolbarSeparator style={style}/>

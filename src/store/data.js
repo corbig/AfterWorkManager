@@ -1,3 +1,5 @@
+
+
 export var data = {
   sondage : [
     {
@@ -62,12 +64,12 @@ export var data = {
 	  {
 
       title: "Soirée Bowling",
-      pic: "images/bowling.jpg",
+      pic: require("../images/bowling.jpg"),
       date: "2017-01-18",
       hour: "09:17",
       subtitle: "",
       todos: [
-        {text: "Réserver au Silver bowling", status: " a fait", user: {name: "Tux", avatar: "images/tux.png"}},
+        {text: "Réserver au Silver bowling", status: " a fait", userId : 0},
       ],
       messages : [
         {idUser: 0, message: "Wesh"},
@@ -83,13 +85,13 @@ export var data = {
 
 	  {
       title: "Soirée Cinema",
-      pic: "images/fantasticbeast.jpg",
+      pic: require('../images/fantasticbeast.jpg'),
       subtitle: "Les Animaux Fantastiques",
       date: "2017-01-18",
       hour: "09:17",
       todos: [
-        {text: "Lunette 3D", status: "fait", user: {name: "Tux", avatar: "images/tux.png"}},
-        {text: "Place cineday", status: " à faire", user: {name: "Tux", avatar: "images/tux.png"}},
+        {text: "Lunette 3D", status: "fait", userId:1},
+        {text: "Place cineday", status: " à faire", userId:2},
       ],
       messages: [
         {idUser: 4, message: "Bien le bonjour Mesdames"},
@@ -104,13 +106,13 @@ export var data = {
 
 	  {
       title: "Soirée Raclette",
-      pic: "images/raclette.jpg",
+      pic: require('../images/raclette.jpg'),
       date: "2017-01-25",
       hour: "18:00",
       subtitle: "",
       todos: [
-        {text: "Acheter fromage", status: "fait", user: {name: "Tux", avatar: "images/tux.png"}},
-        {text: "Acheter pommes de terre", status: " à faire", user: {name: "Tux", avatar: "images/tux.png"}},
+        {text: "Acheter fromage", status: "fait", userId : 3},
+        {text: "Acheter pommes de terre", status: " à faire", userId: 6},
       ],
       messages: [
         {idUser: 6, message: "AV César"},
@@ -119,14 +121,14 @@ export var data = {
 	  },
     {
       title: "Magie Magie",
-      pic: "images/magie_soiree.jpg",
+      pic: require("../images/magie_soiree.jpg"),
       date: "2017-03-01",
       hour: "10:30",
       subtitle: "",
       todos: [
-        {text: "Amener des cartes", status: "à faire", user: {name: "Tux", avatar: "images/tux.png"}},
-        {text: "Acheter le costume de magicien", status: "fait", user: {name: "Tux", avatar: "images/tux.png"}},
-        {text: "Amener le nerf", status: " à faire", user: {name: "Tux", avatar: "images/tux.png"}}
+        {text: "Amener des cartes", status: "à faire", userId : 7},
+        {text: "Acheter le costume de magicien", status: "fait", userId : 8},
+        {text: "Amener le nerf", status: " à faire", userId : 8}
       ],
       messages : [
         {idUser: 8, message: "Salut"},
@@ -150,15 +152,15 @@ export var data = {
   currentIdUser: 0,
 
   Users : [
-    {firstname: "David", lastname: "Langin", avatar: "images/avatar/engineer.png", password:""},
-    {firstname: "Corentin", lastname: "Bigot", avatar: "images/avatar/tux.png", password:""},
-    {firstname: "Romain", lastname: "Marechal", avatar: "images/avatar/dark_vador.png", password:""},
-    {firstname: "Nicolas", lastname: "Babillot", avatar: "images/avatar/nutella.png", password:""},
-    {firstname: "Alphonse", lastname: "", avatar: "images/avatar/freepik.jpg", password:""},
-    {firstname: "Bazile", lastname: "", avatar: "images/avatar/5074.jpg", password:""},
-    {firstname: "Jean-Louis", lastname: "", avatar: "images/avatar/frite.png", password:""},
-    {firstname: "Alexandre", lastname: "", avatar: "images/avatar/ava.jpg", password:""},
-    {firstname: "Mehdi", lastname: "", avatar: "images/avatar/magicien.jpg", password:""},
+    {firstname: "David", lastname: "Langin", avatar: require("../images/avatar/engineer.png"), password:""},
+    {firstname: "Corentin", lastname: "Bigot", avatar: require("../images/avatar/tux.png"), password:""},
+    {firstname: "Romain", lastname: "Marechal", avatar: require("../images/avatar/dark_vador.png"), password:""},
+    {firstname: "Nicolas", lastname: "Babillot", avatar: require("../images/avatar/nutella.png"), password:""},
+    {firstname: "Alphonse", lastname: "", avatar: require("../images/avatar/freepik.jpg"), password:""},
+    {firstname: "Bazile", lastname: "", avatar: require("../images/avatar/5074.jpg"), password:""},
+    {firstname: "Jean-Louis", lastname: "", avatar: require("../images/avatar/frite.png"), password:""},
+    {firstname: "Alexandre", lastname: "", avatar: require("../images/avatar/ava.jpg"), password:""},
+    {firstname: "Mehdi", lastname: "", avatar: require("../images/avatar/magicien.jpg"), password:""},
   ],
 
   currentIndex: 0,

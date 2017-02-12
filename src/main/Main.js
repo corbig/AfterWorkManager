@@ -18,17 +18,21 @@ import { push } from 'react-router-redux'
 import AWAddSoiree from './components/AWAddSoiree.js'
 import RaisedButton from 'material-ui/RaisedButton';
 import Delete from 'material-ui/svg-icons/action/delete';
+import Search from 'material-ui/svg-icons/action/search';
 
 const searchStyle = {
   marginTop : 50,
-  width: "65%",
-  textAlign: 'center',
-  display: 'inline-block'
+  width: "60%",
+  position:'relative',
+  left:'18%',
+  fontSize: 20
+
+
 
 }
 
 const dividerStyle = {
-  marginTop : 300,
+  marginTop : 100,
   textAlign : 'left'
 
 }
@@ -76,8 +80,11 @@ export class Main extends React.Component {
     super(props);
 
     this.state = {
-      delete : false
+      delete : false,
+      searchText : ""
     };
+
+    console.log(this.state.searchText)
   }
 
   enableDelete = () => {
@@ -92,22 +99,30 @@ export class Main extends React.Component {
     this.props.setCurrentPage("main")
   }
 
+  handleUpdateInput = (searchText) =>{
+    this.setState({searchText})
+  }
+
+
   render() {
     return (
       <div>
+      <img src={require("../images/AfterWork.png")} style={{width:350,height:300,marginTop:50,position:'relative', left:'40%'}}/>
       <p className="App-intro">
+
         <AutoComplete
        textFieldStyle = {searchStyle}
        style={searchStyle}
-       hintText="Rechercher un lieu, une soirée ..."
-       dataSource={this.props.soirees}
+       hintText="Rechercher une soirée ..."
+       dataSource = {[]}
        onUpdateInput={this.handleUpdateInput}
      />
+     <Search style={{width:60,height:60,float:'left',position :'relative',left:'29%',top:'100'}}/>
 
      <div style={dividerStyle}>
 
      <Subheader><h4>
-     <img src="images/coupe_de_champ.png" style={{width:27,height:37}}/> Prochaines soirées</h4> </Subheader>
+     <img src={require("../images/coupe_de_champ.png")} style={{width:27,height:37}}/> Prochaines soirées</h4> </Subheader>
     {
       this.state.delete ?  <RaisedButton icon = {<Delete/>} secondary={true} style = {deleteStyle} onTouchTap = {this.disableDelete}/> : <RaisedButton icon = {<Delete/>} primary={true} style = {deleteStyle} onTouchTap = {this.enableDelete}/>
     }
@@ -115,7 +130,11 @@ export class Main extends React.Component {
      <div style={recentlyStyle}>
      {
        this.props.soirees.map((soiree,index)=>
-         <AWThumb {...soiree}  index = {index} changeSoiree = {this.props.changeSoiree} delete = {this.state.delete} />)
+
+
+        (this.state.searchText === "" || soiree.title.toLowerCase().includes(this.state.searchText.toLowerCase())) ? <AWThumb {...soiree}  index = {index} changeSoiree = {this.props.changeSoiree} delete = {this.state.delete} /> : null
+
+      )
      }
        </div>
 

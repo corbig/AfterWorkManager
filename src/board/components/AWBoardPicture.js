@@ -8,7 +8,8 @@ import AWInfoCard from './AWInfoCard'
 import {cyan500} from 'material-ui/styles/colors';
 
 const cardStyle = {
-maxHeight: 600,
+position : 'relative',
+height: "33%",
 width : "100%",
 margin: 'auto',
 textAlign: 'center',
@@ -53,8 +54,9 @@ export default class AWBoardPic extends React.Component {
 
       <CardMedia
         overlay={<CardTitle title={this.props.title} subtitle={this.props.subtitle}/>}
+        style ={{position:"relative", height : "100%"}}
      >
-    <img src={this.props.pic} style = {{maxHeight : 600}}/>
+    <img src={this.props.pic} style = {{position:"relative", height : "100%"}}/>
   </CardMedia>
 
  </Paper>

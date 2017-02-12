@@ -18,7 +18,7 @@ export default class AWInputCard extends React.Component {
   render() {
     return (
 
-     <CardActions>
+     <CardActions style ={this.props.style}>
      <TextField
      hintText="Ajouter un item..." style={{width:"50%"}} onChange={this.textChanged}/>
 

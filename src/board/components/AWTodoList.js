@@ -30,7 +30,6 @@ const toolbarStyle = {
       color : "#FFFFFF",
       position: "relative",
        marginTop:0,
-       zIndex: 2,
        width:"100%"
 }
 const whiteStyle ={
@@ -39,9 +38,10 @@ const whiteStyle ={
 
 const cardStyle = {
 margin: 'auto',
-postion:"absolute",
 display: 'block',
 width:"100%",
+height:"62%",
+position : 'relative'
 
 
 }
@@ -49,7 +49,7 @@ width:"100%",
 const paperStyle={
   overflowY: "auto",
   position : "relative",
-  height : "500px"
+  height : "100%"
 }
 
 
@@ -73,7 +73,9 @@ const rightIconMenu = (
 
 const mapStateToProps = (store) => {
   return {
-    todos : store.mainState.soirees[store.mainState.currentIndex].todos
+    todos : store.mainState.soirees[store.mainState.currentIndex].todos,
+    users : store.mainState.Users,
+    currentUserId : store.mainState.currentUserId
   }
 }
 
@@ -118,14 +120,14 @@ let AWTodoList =  React.createClass({
       {
         this.props.todos.map((todo,index)=>
           <div>
-          <AWTodoItem {...todo} changeStatus={this.props.changeStatus} index={index}/>
+          <AWTodoItem {...todo} users = {this.props.users} changeStatus={this.props.changeStatus} index={index}/>
           <Divider />
           </div>
 
       )}
      </List>
      </Paper>
-    <AWInputCard sendHandler={this.props.addTodo}/>
+    <AWInputCard sendHandler={this.props.addTodo} style={{position:'absolute',bottom:0,width:"100%"}}/>
       </Card>
 
     );

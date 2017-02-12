@@ -12,12 +12,47 @@ import AWDateTimePicker from './components/AWDateTimePicker';
 
 const boardStyle={
   height : "100%",
+  width : "100%",
+  maxHeight :"100%",
   padding : 0,
-  margin : "auto",
+  margin : 0,
+  position : "fixed",
+  overflow: "hidden"
 }
 
+const columnStyle={
+  height : "100%",
+  maxHeight :"100%",
+  padding : 0,
+  margin : "auto",
+  position : "relative",
+
+}
+
+const todoStyle={
+  minHeight : "60%",
+  maxHeight : "90%",
+  padding : 0,
+  margin :  0,
+  position : "relative",
+
+}
+
+const picStyle={
+  minHeight : "10%",
+  maxHeight : "33%",
+  padding : 0,
+  margin : "auto",
+  position : "relative",
+}
+
+
+
 const middleStyle={
-  height : "100%"
+  height : "100%",
+  position : "relative",
+  overflowY: "scroll",
+
 }
 
 const mapStateToProps = (store) => {
@@ -53,17 +88,17 @@ export class AWBoard extends React.Component {
 
     return (
       <Container fluid={true} style={boardStyle}>
-         <Col lg="3" md="3" style={boardStyle}>
-            <Row><AWBoardPic {...this.props.soiree}/></Row>
-            <Row style={boardStyle}><AWTodoList/></Row>
+         <Col lg="3" md="3" style={columnStyle}>
+            <AWBoardPic {...this.props.soiree}/>
+            <AWTodoList/>
          </Col>
          <Col lg="6" md="6" style={middleStyle}>
-         <Row >
-           <AWMapCard/></Row></Col>
-         <Col lg="3" md="3" style={boardStyle}>
+         <Row><AWMapCard/></Row>
+         <Row><AWPol/></Row>
+         </Col>
+         <Col lg="3" md="3" style={columnStyle}>
          <AWChat/>
          </Col>
-         <Col lg="6" md="3" style={boardStyle}><AWPol/></Col>
      </Container>
     );
   }
