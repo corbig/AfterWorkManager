@@ -83,9 +83,22 @@ const mapStateToProps = (store) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addOptions:(text)=>{
+    addOptions:(text, options)=>{
       console.log(text)
-      dispatch(addOptions(text))
+      var res = false;
+      if(text.length!=0) {
+        console.log(options)
+        for(var i=0;i<options.length;i++) {
+          if(options[i].text==text) {
+            res=true;
+          }
+        }
+        if(res==false) {
+          dispatch(addOptions(text))
+        }
+        
+      }
+      
     },
     total:(firstname, res) => {
       var temp=0

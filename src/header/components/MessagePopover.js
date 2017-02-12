@@ -31,6 +31,9 @@ const mapDispatchToProps = (dispatch) => {
           }
         }
         return {res, soi};
+    },
+    redirect:(index)=>{
+      return '/board';
     }
   }
 }
@@ -82,8 +85,6 @@ export class MessagePopover extends React.Component {
                
              this.props.getMessagesSoirees(this.props.mainstate).res.map((test, index) => (
               <div>
-              
-              {console.log(test)}
               <ListItem
                 leftAvatar={<Avatar src={this.props.mainstate.soirees[this.props.getMessagesSoirees(this.props.mainstate).soi[index]].pic} />}
                 primaryText={this.props.mainstate.soirees[this.props.getMessagesSoirees(this.props.mainstate).soi[index]].title}
