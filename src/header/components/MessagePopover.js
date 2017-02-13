@@ -28,11 +28,8 @@ const mapDispatchToProps = (dispatch) => {
         var soi = [];
         for(var i=0;i<state.soirees.length;i++) {
            if(state.soirees[i].messages.length!=0) {
-          if(state.soirees[i].messages[state.soirees[i].messages.length-1].idUser!=state.currentIdUser) {
-            
-            res.push(state.soirees[i].messages[state.soirees[i].messages.length-1])
-            soi.push(i);
-          }
+             res.push(state.soirees[i].messages[state.soirees[i].messages.length-1])
+             soi.push(i);
            }
         }
         return {res, soi};
@@ -41,9 +38,7 @@ const mapDispatchToProps = (dispatch) => {
       var num=0;
       for(var i=0;i<state.soirees.length;i++) {
           if(state.soirees[i].messages.length!=0) {
-            if(state.soirees[i].messages[state.soirees[i].messages.length-1].idUser!=state.currentIdUser) {
-                          num++;
-                        }
+            num++;
           }
             
           }
