@@ -68,7 +68,9 @@ export var data = {
       hour: "09:17",
       subtitle: "",
       todos: [
-        {text: "Réserver au Silver bowling", status: " a fait", userId : 0},
+        {text: "Réserver au Silver bowling", status: "à faire", userId : 0},
+		{text: "Amener des pringles", status: "fait", userId : 1},
+		{text: "N'oubliez pas vos chaussures", status: "à faire", userId : 0},
       ],
       messages : [
         {idUser: 0, message: "Wesh"},
@@ -90,7 +92,8 @@ export var data = {
       hour: "09:17",
       todos: [
         {text: "Lunette 3D", status: "fait", userId:1},
-        {text: "Place cineday", status: " à faire", userId:2},
+        {text: "Place cineday", status: "à faire", userId:2},
+        {text: "Place orange", status: "à faire", userId:2},
       ],
       messages: [
         {idUser: 4, message: "Bien le bonjour Mesdames"},
@@ -111,7 +114,8 @@ export var data = {
       subtitle: "",
       todos: [
         {text: "Acheter fromage", status: "fait", userId : 3},
-        {text: "Acheter pommes de terre", status: " à faire", userId: 6},
+        {text: "Acheter pommes de terre", status: "à faire", userId: 6},
+        {text: "charcut", status: "à faire", userId: 6},
       ],
       messages: [
         {idUser: 6, message: "AV César"},
@@ -127,7 +131,7 @@ export var data = {
       todos: [
         {text: "Amener des cartes", status: "à faire", userId : 7},
         {text: "Acheter le costume de magicien", status: "fait", userId : 8},
-        {text: "Amener le nerf", status: " à faire", userId : 8}
+        {text: "Amener le nerf", status: "à faire", userId : 8}
       ],
       messages : [
         {idUser: 8, message: "Salut"},
