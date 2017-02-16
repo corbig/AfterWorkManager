@@ -119,11 +119,22 @@ let AWTodoList =  React.createClass({
       <List>
       {
         this.props.todos.map((todo,index)=>
-          <div>
+		
+        todo.status !== "fait" ? <div>
           <AWTodoItem {...todo} users={this.props.users} changeStatus={this.props.changeStatus} index={index}/>
           <Divider />
           </div>
-
+		  : null
+      )}
+	  
+	  {
+        this.props.todos.map((todo,index)=>
+		
+        todo.status === "fait" ? <div>
+          <AWTodoItem {...todo} users={this.props.users} changeStatus={this.props.changeStatus} index={index}/>
+          <Divider />
+          </div>
+		  : null
       )}
      </List>
      </Paper>
