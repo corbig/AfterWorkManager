@@ -10,7 +10,8 @@
     "electron": "NODE_ENV=production webpack --progress -p --config ./webpack.config.js && electron .",
 	"winelectron": "SET NODE_ENV=production & webpack --progress -p --config ./webpack.config.js & electron .",
     "pack": "build --dir",
-    "dist": "build",
+    "dist": "NODE_ENV=production webpack --progress -p --config ./webpack.config.js && build",
+    "windist": "SET NODE_ENV=production & webpack --progress -p --config ./webpack.config.js & build",
     "postinstall": "install-app-deps"
   },
   "dependencies": {
