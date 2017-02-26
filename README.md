@@ -9,4 +9,19 @@ npm install
 
 npm start
 
+Pour tester le projet sous la forme d'une application electron : 
+ 
+npm run winelectron (Pour windows uniquement)
+
+ou
+
+npm run elelctron
+
+Pour générer le projet sous la forme d'une application electron : 
+
+npm run windist (Pour windows uniquement)
+
+ou
+
+npm run dist
 
