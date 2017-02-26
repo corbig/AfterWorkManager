@@ -75,7 +75,11 @@ backgroundColor: '#00BCD4',
 color : "#FFFFFF"
 }
 
+var directionsDisplay = new google.maps.DirectionsRenderer();
+
 const mapStateToProps = (store) => {
+
+  directionsDisplay.setMap(null);
   return {
     cursor : store.mainState.soirees[store.mainState.currentIndex].cursor,
   }
@@ -89,23 +93,24 @@ export class AWMapCard extends React.Component {
     this.state = {
     text:"",
     directionsService:null,
-    directionsDisplay:null,
     autocomplete:null,
     transport:"",
     address:[],
     input : "",
     distance :"",
     duration : "",
+    map : null
   };
   }
+
 
   onMapCreated = (map) => {
     map.setOptions({
       disableDefaultUI: true
     });
 
-    this.state.directionsDisplay = new google.maps.DirectionsRenderer();
-    this.state.directionsDisplay.setMap(map);
+    this.state.map = map;
+
 
     this.state.directionsService = new google.maps.DirectionsService();
 
@@ -145,6 +150,8 @@ export class AWMapCard extends React.Component {
 
   onGoClick=() =>{
 
+   directionsDisplay.setMap(this.state.map);
+
     var destination = this.props.cursor
 
    console.log(destination);
@@ -163,7 +170,7 @@ export class AWMapCard extends React.Component {
 
     if (status == 'OK') {
 
-      this.state.directionsDisplay.setDirections(response);
+      directionsDisplay.setDirections(response);
       this.setState({distance : response.routes[0].legs[0].distance.text , duration : response.routes[0].legs[0].duration.text});
     }
 
@@ -220,7 +227,7 @@ export class AWMapCard extends React.Component {
         />
 
           <AWEditCursor />
-        { (this.state.distance === "" && this.state.duration === "") ? null : <AWInfoCard items={items} paperStyle={infoPaperStyle} itemStyle = {itemStyle}/> }
+        { (directionsDisplay.map === null) ? null : <AWInfoCard items={items} paperStyle={infoPaperStyle} itemStyle = {itemStyle}/> }
 
 
       </Gmaps>
